@@ -90,7 +90,7 @@ dialog::backdrop{background:rgba(5,5,6,.94);backdrop-filter:blur(6px)}
 dialog img{max-height:94vh;margin:auto;border-radius:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 
-/* scroll reveal (only when JS is on) */
+/* scroll reveal */
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
 
@@ -103,8 +103,9 @@ section{padding-top:11vh}
 @media(prefers-reduced-motion:reduce){.reel{animation:none}html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}*{transition:none!important}}
 
 /* ===== per-section vibes ===== */
+
+/* DESIGN */
 section{transition:background .4s}
-/* DESIGN: warm paper, swiss poster */
 #design{--bg:#ece6d8;--ink:#16130f;--mut:#6a6457;--ln:#cdc5b1;--acc:#d9411e;background:var(--bg);color:var(--ink)}
 #design h2{font:600 clamp(60px,12vw,170px)/.82 var(--sans);letter-spacing:-.065em;text-transform:lowercase}
 #design h2::after{content:".";color:var(--acc)}
@@ -112,7 +113,8 @@ section{transition:background .4s}
 #design figure{border-radius:0;box-shadow:0 30px 50px -28px rgba(40,25,10,.45)}
 #design figure img{filter:none}
 #design .cap{color:var(--ink);border-top:2px solid var(--ink)}
-/* FILM: cinema */
+
+/* FILM */
 #film{--bg:#060609;--ink:#f1ece3;--mut:#93909a;--ln:#26242b;--acc:#e5533d;background:radial-gradient(120% 60% at 50% 0%,#1a1013 0%,var(--bg) 60%);color:var(--ink);border-top:1px solid #000;position:relative}
 #film::before,#film::after{content:"";position:absolute;left:0;right:0;height:14px;background:repeating-linear-gradient(90deg,transparent 0 14px,rgba(241,236,227,.16) 14px 26px);-webkit-mask:linear-gradient(#000,#000);opacity:.6}
 #film::before{top:26px}#film::after{display:none}
@@ -122,7 +124,8 @@ section{transition:background .4s}
 #film .card::before{content:"Reel 0" counter(reel);font:400 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
 #film .yt,#film figure{border-radius:0}
 #film .yt::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 80px rgba(0,0,0,.6);pointer-events:none}
-/* WEB: terminal grid */
+
+/* WEB */
 #web{--bg:#080d0b;--ink:#e6f4ec;--mut:#7f978a;--ln:#1c2a24;--acc:#7dffb4;--card:#0d1512;background:var(--bg) radial-gradient(rgba(125,255,180,.16) 1px,transparent 1.5px) 0 0/30px 30px;color:var(--ink)}
 #web h2{font:500 clamp(54px,10vw,140px)/.9 var(--mono);letter-spacing:-.07em;text-transform:lowercase}
 #web h2::after{content:"_";color:var(--acc);animation:blink 1.1s steps(1) infinite}
@@ -132,7 +135,8 @@ section{transition:background .4s}
 #web .screen{border-color:rgba(125,255,180,.25);box-shadow:0 0 60px -20px rgba(125,255,180,.35)}
 #web .bar button.on{background:var(--acc);border-color:var(--acc);color:#04120a}
 @keyframes blink{50%{opacity:0}}
-/* CONTACT: gold block */
+
+/* CONTACT */
 .contact{--ink:#0a0a0b;--mut:#4a4536;--ln:rgba(10,10,11,.28);--acc:#0a0a0b;background:#e9d8a6;color:var(--ink);padding-bottom:12vh}
 .contact h2{font:400 clamp(60px,12vw,170px)/.85 var(--serif);letter-spacing:-.04em;margin-bottom:.35em}
 .contact a{color:#0a0a0b;border-bottom-color:rgba(10,10,11,.28)}
@@ -173,29 +177,80 @@ h1 .ln2{font-style:italic;color:var(--acc);margin-left:.06em}
 #film .card:not(:has(.yt)){grid-template-columns:1fr;gap:12px;padding-top:28px}
 }
 
-/* ===== links, editorial, web mock ===== */
+/* ===== links ===== */
 .lk{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--acc);text-decoration:none}
 .lk::after{content:" \2197"}.lk:hover{text-decoration:underline;text-underline-offset:5px}
 .feat .links{display:flex;gap:22px;flex-wrap:wrap}
+
+/* ===== EDITORIAL ===== */
 #editorial{--bg:#e6e7ea;--ink:#0b0b0d;--mut:#575a63;--ln:#c7c9d0;--acc:#2438ff;background:var(--bg);color:var(--ink)}
 #editorial h2{font:400 clamp(60px,12vw,170px)/.85 var(--serif);letter-spacing:-.04em}
-#editorial .intro{font-family:var(--serif);font-size:clamp(22px,2.2vw,30px);line-height:1.25;color:var(--ink);max-width:24em}
+#editorial .intro{font-family:var(--serif);font-size:clamp(22px,2.2vw,30px);line-height:1.25;color:var(--ink);max-width:25em}
 #editorial figure{border-radius:0;box-shadow:0 30px 50px -28px rgba(10,12,30,.4)}
 #editorial figure img{filter:none}
-.edrow{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,.8fr) minmax(0,1.2fr);gap:14px 40px;align-items:end;margin:0 0 14vh}
-.edtext .k,.ecap .k{display:block;font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
-.edtext h3{font:400 clamp(34px,4vw,56px)/1 var(--serif);letter-spacing:-.02em;margin:0 0 16px}
-.edtext p{color:var(--mut);margin:0 0 18px;max-width:28em}
-.edtext p a,.ecap a{color:var(--ink);text-decoration-color:var(--acc);text-underline-offset:4px}
-.edgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 32px}
-.ecap{font-size:14px;line-height:1.5;color:var(--mut);margin:20px 0 0}
-.ecap b{display:block;font:400 24px/1.15 var(--serif);color:var(--ink);letter-spacing:-.01em;margin:0 0 8px}
-.mock{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:20px;background:#fff;color:#111;text-decoration:none}
-.mock img{width:min(30%,210px);height:auto}
-.mock span{font:400 clamp(26px,3.6vw,48px)/1 var(--serif);letter-spacing:-.02em}
-@media(max-width:800px){.edrow{grid-template-columns:1fr 1fr}.edtext{grid-column:1/-1;order:-1}.edgrid{grid-template-columns:1fr;gap:44px}}
 
-/* ===== v3: film posters, editorial features, press list ===== */
+/* article preview */
+.article-preview{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:7vw;align-items:start;margin:0 0 14vh;padding:0 0 8vh;border-bottom:1px solid var(--ln)}
+.article-head{padding-top:2px}
+.article-kicker{display:block;font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 20px}
+.article-preview h3{font:400 clamp(46px,6vw,88px)/.91 var(--serif);letter-spacing:-.035em;margin:0 0 26px;max-width:10em}
+.article-dek{font:400 clamp(20px,2vw,27px)/1.3 var(--serif);max-width:25em;margin:0 0 26px;color:var(--ink)}
+.article-meta{font:400 12px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:0 0 28px}
+.article-copy{max-width:38em;color:#34363d;font-size:16px;line-height:1.75}
+.article-copy p{margin:0 0 18px}
+.article-copy p:first-child::first-letter{font:400 56px/.8 var(--serif);float:left;margin:.08em .1em 0 0;color:var(--ink)}
+.article-link{display:inline-block;margin-top:4px}
+.article-note{font:400 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--mut);border-top:1px solid var(--ln);padding-top:16px}
+
+/* vice social */
+.social-feature{margin:0 0 14vh}
+.social-feature-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.7fr);gap:6vw;align-items:end;margin-bottom:34px}
+.social-feature h3{font:400 clamp(38px,5vw,70px)/.95 var(--serif);letter-spacing:-.025em;margin:0}
+.social-feature-copy{color:var(--mut);max-width:30em;margin:0}
+.vice-reel{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:32px;align-items:start}
+.vice-reel-media{background:#d2d3d6;border:1px solid var(--ln);overflow:hidden;position:relative}
+.vice-reel-media iframe{display:block;width:100%;height:min(72vh,760px);border:0;background:#000}
+.vice-reel-copy{padding:14px 0 0}
+.vice-reel-copy .k{display:block;font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+.vice-reel-copy p{color:var(--mut);max-width:30em;margin:0 0 20px}
+
+/* instagram posts */
+.ig-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.7fr);gap:6vw;align-items:end;margin:0 0 34px}
+.ig-heading h3{font:400 clamp(38px,5vw,70px)/.95 var(--serif);letter-spacing:-.025em;margin:0}
+.ig-heading p{color:var(--mut);margin:0;max-width:30em}
+.ig-posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0 0 14vh}
+.ig-post{min-width:0}
+.ig-post-media{height:620px;overflow:auto;background:#d2d3d6;border:1px solid var(--ln);scrollbar-width:thin}
+.ig-post-media::-webkit-scrollbar{width:8px}
+.ig-post-media::-webkit-scrollbar-thumb{background:#9a9ca3}
+.ig-post-media blockquote.instagram-media{margin:0!important;min-width:calc(100% - 2px)!important;width:calc(100% - 2px)!important}
+.ig-post-copy{padding:18px 0 0}
+.ig-post-copy .k{display:block;font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 12px}
+.ig-post-copy h4{font:400 28px/1.05 var(--serif);margin:0 0 8px}
+.ig-post-copy p{font-size:14px;line-height:1.55;color:var(--mut);margin:0 0 14px}
+.ig-post-copy .lk{font-size:11px}
+
+/* press about abhi */
+.press-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);gap:6vw;align-items:end;margin:0 0 44px}
+.press-intro h3{font:400 clamp(38px,5vw,70px)/.95 var(--serif);letter-spacing:-.025em;margin:0}
+.press-intro p{color:var(--mut);max-width:31em;margin:0}
+.plist{margin:0 0 6vh;border-bottom:1px solid var(--ln)}
+.prow{display:grid;grid-template-columns:8rem 17rem minmax(0,1fr) 8rem;gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid var(--ln);color:var(--ink);text-decoration:none;transition:padding .4s var(--ease),color .3s}
+.prow .d,.prow .o,.prow .y{font:400 12px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);transition:color .3s}
+.prow .t{font:400 clamp(24px,2.5vw,36px)/1.14 var(--serif);letter-spacing:-.015em}
+.prow .y{text-align:right}.prow .y::after{content:" \2197"}
+.prow:hover{padding-left:.6em;color:var(--acc)}.prow:hover .o,.prow:hover .y{color:var(--acc)}
+@media(max-width:800px){
+.article-preview{grid-template-columns:1fr;gap:34px;padding-bottom:10vh}
+.article-preview h3{font-size:clamp(42px,12vw,70px)}
+.social-feature-head,.ig-heading,.press-intro{grid-template-columns:1fr;gap:18px}
+.vice-reel{grid-template-columns:1fr}
+.vice-reel-media iframe{height:75vh;min-height:620px}
+.ig-posts{grid-template-columns:1fr;gap:56px}
+.ig-post-media{height:620px}
+}
+
+/* ===== v3: film posters ===== */
 .posters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:88px 56px;margin-top:14vh}
 .pcard{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:32px;align-items:end}
 .pcard figure{border-radius:0}
@@ -212,12 +267,6 @@ h1 .ln2{font-style:italic;color:var(--acc);margin-left:.06em}
 .ftr h3{font:400 clamp(38px,6vw,92px)/1 var(--serif);letter-spacing:-.03em;margin:0;max-width:15em}
 .ftr p{color:var(--mut);max-width:30em;margin:22px 0 0}
 .ftr:hover h3{color:var(--acc)}
-.plist{margin:0 0 6vh;border-bottom:1px solid var(--ln)}
-.prow{display:grid;grid-template-columns:8rem 17rem minmax(0,1fr) 8rem;gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid var(--ln);color:var(--ink);text-decoration:none;transition:padding .4s var(--ease),color .3s}
-.prow .d,.prow .o,.prow .y{font:400 12px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);transition:color .3s}
-.prow .t{font:400 clamp(24px,2.5vw,36px)/1.14 var(--serif);letter-spacing:-.015em}
-.prow .y{text-align:right}.prow .y::after{content:" \2197"}
-.prow:hover{padding-left:.6em;color:var(--acc)}.prow:hover .o,.prow:hover .y{color:var(--acc)}
 @media(max-width:800px){
 .posters{grid-template-columns:1fr;gap:64px}
 .pcard{grid-template-columns:minmax(0,.7fr) minmax(0,1fr);gap:20px}
@@ -262,6 +311,7 @@ main:focus{outline:none}
 @media(max-width:800px){.g-grid{opacity:.4}.g-btn{padding:18px 20px;letter-spacing:.12em}}
 @media(prefers-reduced-motion:reduce){.g-grid,.g-title,.g-btn.on,.cur{animation:none}.gate,.g-in{transition:none}}
 </style></head><body>
+
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Intro">
 <canvas aria-hidden="true"></canvas><div class="g-grid" aria-hidden="true"></div>
 <div class="g-hud"><span>Abhi Tundel</span><div class="g-r"><button class="g-snd" type="button">Sound off</button><button class="g-skip" type="button">Skip &rsaquo;</button></div></div>
@@ -272,15 +322,40 @@ main:focus{outline:none}
 <ul class="g-list"><li class="hot"><span data-t="Web experiences." data-ms="20" data-p="120"></span></li><li><span data-t="Posters." data-ms="20" data-p="120"></span></li><li><span data-t="Films." data-ms="20" data-p="120"></span></li><li><span data-t="Editorials." data-ms="20" data-p="120"></span></li><li><span data-t="Experiments." data-ms="20" data-p="300"></span></li></ul>
 <button class="g-btn" type="button" aria-label="Enter the archive">[ ENTER THE ARCHIVE ]</button>
 </div></div>
+
 <header class="nav"><a href="#top">Abhi Tundel</a><div><a href="#web">Web</a><a href="#design">Design</a><a href="#film">Film</a><a href="#editorial">Editorial</a><a href="#contact">Contact</a></div></header>
-<main id="top"><section class="hero" style="padding-top:clamp(92px,12vh,140px)"><div style="flex:1"></div><p class="eyebrow">Portfolio &middot; Goa, India</p><h1 aria-label="Abhi Tundel"><span class="ln1" aria-hidden="true"><span class="ch" style="--i:0">A</span><span class="ch" style="--i:1">b</span><span class="ch" style="--i:2">h</span><span class="ch" style="--i:3">i</span></span><br><span class="ln2" aria-hidden="true"><span class="ch" style="--i:4">T</span><span class="ch" style="--i:5">u</span><span class="ch" style="--i:6">n</span><span class="ch" style="--i:7">d</span><span class="ch" style="--i:8">e</span><span class="ch" style="--i:9">l</span></span></h1><p class="tag">Web developer, designer and director in Goa, India. Sites, posters and brands for live comedy, and films under Smol Cat Films.</p><div class="reel"><img src="images/design/goas-finest.jpg" alt=""><img src="images/design/superhero-pop-quiz.jpg" alt=""><img src="images/film/above-it-all-key-art.jpg" alt=""><img src="images/design/qrc-lineup-pink.jpg" alt=""><img src="images/editorial/vice-doctor-visits.jpg" alt=""><img src="images/design/raunchy-comedy-nights.jpg" alt=""><img src="images/brand/join-the-cartel.jpg" alt=""><img src="images/design/qrc-lineup-green.jpg" alt=""><img src="images/editorial/vice-zillennial.jpg" alt=""><img src="images/design/comedy-writing-workshop.jpg" alt=""></div></section>
+
+<main id="top">
+
+<section class="hero" style="padding-top:clamp(92px,12vh,140px)">
+<div style="flex:1"></div>
+<p class="eyebrow">Portfolio &middot; Goa, India</p>
+<h1 aria-label="Abhi Tundel"><span class="ln1" aria-hidden="true"><span class="ch" style="--i:0">A</span><span class="ch" style="--i:1">b</span><span class="ch" style="--i:2">h</span><span class="ch" style="--i:3">i</span></span><br><span class="ln2" aria-hidden="true"><span class="ch" style="--i:4">T</span><span class="ch" style="--i:5">u</span><span class="ch" style="--i:6">n</span><span class="ch" style="--i:7">d</span><span class="ch" style="--i:8">e</span><span class="ch" style="--i:9">l</span></span></h1>
+<p class="tag">Web developer, designer and director in Goa, India. Sites, posters and brands for live comedy, and films under Smol Cat Films.</p>
+<div class="reel">
+<img src="images/design/goas-finest.jpg" alt=""><img src="images/design/superhero-pop-quiz.jpg" alt=""><img src="images/film/above-it-all-key-art.jpg" alt=""><img src="images/design/qrc-lineup-pink.jpg" alt=""><img src="images/editorial/vice-doctor-visits.jpg" alt=""><img src="images/design/raunchy-comedy-nights.jpg" alt=""><img src="images/brand/join-the-cartel.jpg" alt=""><img src="images/design/qrc-lineup-green.jpg" alt=""><img src="images/editorial/vice-zillennial.jpg" alt=""><img src="images/design/comedy-writing-workshop.jpg" alt="">
+</div>
+</section>
+
 <section id="web"><h2>Web</h2><p class="intro">Two sites I built, running live inside this page. Scroll goancomedycartel.com right here, or open either one.</p>
-<div class="sites"><div class="site" data-live="https://goancomedycartel.com"><div class="bar"><span>goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
-<div class="screen"><img class="prev" src="https://goancomedycartel.com/Social-Image.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="goancomedycartel.com" loading="lazy" allow="fullscreen"></iframe></div></div>
-<div class="site"><div class="bar"><span>smolcatfilms.com</span><div><a href="https://www.smolcatfilms.com" target="_blank" rel="noopener">Open site</a></div></div>
-<div class="screen"><a class="mock" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/brand/smol-cat-films-mascot.jpg" alt=""><span>Born this stray!</span></a><a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/web/smolcatfilms.jpg" alt="smolcatfilms.com preview" onerror="this.parentNode.remove()"></a><a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><video autoplay muted loop playsinline preload="metadata"><source src="images/web/smolcatfilms.mp4" type="video/mp4" onerror="this.closest('.shot').remove()"></video></a></div></div></div>
+<div class="sites">
+<div class="site" data-live="https://goancomedycartel.com">
+<div class="bar"><span>goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="screen"><img class="prev" src="https://goancomedycartel.com/Social-Image.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="goancomedycartel.com" loading="lazy" allow="fullscreen"></iframe></div>
+</div>
+<div class="site">
+<div class="bar"><span>smolcatfilms.com</span><div><a href="https://www.smolcatfilms.com" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="screen">
+<a class="mock" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/brand/smol-cat-films-mascot.jpg" alt=""><span>Born this stray!</span></a>
+<a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/web/smolcatfilms.jpg" alt="smolcatfilms.com preview" onerror="this.parentNode.remove()"></a>
+<a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><video autoplay muted loop playsinline preload="metadata"><source src="images/web/smolcatfilms.mp4" type="video/mp4" onerror="this.closest('.shot').remove()"></video></a>
+</div>
+</div>
+</div>
 <p class="note">goancomedycartel.com runs live inside this page. smolcatfilms.com opens in its own tab, because its host does not allow it to be shown inside another page. If the goancomedycartel.com frame stays blank, switch to Preview or tap Open site.</p>
-<p class="note cta"><a class="lk" href="mailto:abhi@smolcatfilms.com?subject=Website%20project">Need a website? Let&rsquo;s talk</a></p></section>
+<p class="note cta"><a class="lk" href="mailto:abhi@smolcatfilms.com?subject=Website%20project">Need a website? Let&rsquo;s talk</a></p>
+</section>
+
 <section id="design"><h2>Design</h2><p class="intro">Posters, brand identity and decks for live comedy and independent film.</p>
 <div class="row"><figure style="flex:0.773 1 0"><img src="images/design/goas-finest.jpg" alt="Goa's Finest poster" width="850" height="1100" loading="lazy"></figure><figure style="flex:0.800 1 0"><img src="images/design/qrc-lineup-pink.jpg" alt="Queer Rated Comedy lineup poster, pink" width="540" height="675" loading="lazy"></figure><figure style="flex:0.800 1 0"><img src="images/design/superhero-pop-quiz.jpg" alt="The Very Fun Pop Quiz, superhero films, poster" width="1080" height="1350" loading="lazy"></figure></div>
 <div class="row"><figure style="flex:0.707 1 0"><img src="images/design/qrc-lineup-green.jpg" alt="Queer Rated Comedy lineup poster, green" width="635" height="898" loading="lazy"></figure><figure style="flex:0.667 1 0"><img src="images/design/qrc-open-mic.jpg" alt="Queer Rated Open Mic poster" width="500" height="750" loading="lazy"></figure><figure style="flex:0.707 1 0"><img src="images/design/raunchy-comedy-nights.jpg" alt="Raunchy Comedy Nights poster" width="1100" height="1556" loading="lazy"></figure></div>
@@ -290,7 +365,9 @@ main:focus{outline:none}
 <div class="row"><figure style="flex:1.777 1 0"><img src="images/deck/navin-portfolio-cover.jpg" alt="Navin Noronha portfolio cover" width="1100" height="619" loading="lazy"></figure><figure style="flex:1.777 1 0"><img src="images/deck/this-is-navin-noronha.jpg" alt="This is Navin Noronha" width="1100" height="619" loading="lazy"></figure></div>
 <div class="row"><figure style="flex:1.777 1 0"><img src="images/deck/live-shows-and-tours.jpg" alt="Live shows and tours" width="1100" height="619" loading="lazy"></figure><figure style="flex:1.777 1 0"><img src="images/deck/corporate-clients.jpg" alt="Corporate clients" width="1100" height="619" loading="lazy"></figure></div>
 <p class="cap">Event collateral</p>
-<div class="row"><figure style="flex:0.707 1 0"><img src="images/design/comedy-writing-workshop.jpg" alt="Comedy writing workshop poster" width="778" height="1100" loading="lazy"></figure><figure style="flex:0.707 1 0"><img src="images/design/bar-menu.jpg" alt="Bar menu" width="707" height="1000" loading="lazy"></figure><figure style="flex:0.707 1 0"><img src="images/design/good-child-poster.jpg" alt="The Good Child poster" width="778" height="1100" loading="lazy"></figure></div></section>
+<div class="row"><figure style="flex:0.707 1 0"><img src="images/design/comedy-writing-workshop.jpg" alt="Comedy writing workshop poster" width="778" height="1100" loading="lazy"></figure><figure style="flex:0.707 1 0"><img src="images/design/bar-menu.jpg" alt="Bar menu" width="707" height="1000" loading="lazy"></figure><figure style="flex:0.707 1 0"><img src="images/design/good-child-poster.jpg" alt="The Good Child poster" width="778" height="1100" loading="lazy"></figure></div>
+</section>
+
 <section id="film"><h2>Film</h2><p class="intro">Documentary and short films under Smol Cat Films.</p>
 <div class="feat"><figure style="flex:1.414 1 0"><img src="images/film/above-it-all-key-art.jpg" alt="Above It All key art" width="1100" height="778" loading="lazy"></figure><div><h3>Above It All</h3><p>A 90-minute documentary on caste, queerness and DBA identity in India, from Bombay to rural Maharashtra. Co-directed with Navin Noronha.</p><div class="links"><a class="lk" href="https://www.instagram.com/reel/DLx5f7aozLv/" target="_blank" rel="noopener">Watch the reel</a></div></div></div>
 <p class="cap">Above It All: the people</p>
@@ -308,68 +385,615 @@ main:focus{outline:none}
 <article class="pcard"><figure style="flex:0.697 1 0"><img src="images/film/blood-line-poster.jpg" alt="Blood Line poster" width="542" height="778" loading="lazy"></figure><div><h3>Blood Line <small>2018</small></h3><p>Molly, a psychiatrist, seems to have the perfect life until her boyfriend Alex uncovers a hidden chest of lies, theft and deception.</p><a class="lk" href="https://www.imdb.com/title/tt19783656/" target="_blank" rel="noopener">See on IMDb</a></div></article>
 </div>
 <p class="note credit">Casting director, Rainbow Rishta (Prime Video docuseries, 2023). <a class="lk" href="https://www.imdb.com/title/tt29414624/fullcredits/" target="_blank" rel="noopener">Full credits</a></p>
-<p class="note">Awards were granted to Smol Cat Films by the respective festival organisers. Member of the South Asian Film Collective. Co-host of the podcast Just Ghar Se.</p></section>
-<section id="editorial"><h2>Editorial</h2><p class="intro">Writing for VICE, and the press, reviews and conversations around the work.</p>
-<p class="cap">Writing: VICE</p>
-<a class="ftr" href="https://www.vice.com/en/article/this-is-how-it-is-dating-a-stand-up-comedian-in-india/" target="_blank" rel="noopener"><div><span class="k">Feature &middot; VICE Life &middot; 23 June 2023</span><h3>What it&rsquo;s Like to Date a Stand-Up Comedian in India</h3><p>Every comedian has dating material. Nobody asks the partner. Written by <a href="https://www.instagram.com/abhitundel/" target="_blank" rel="noopener">@abhitundel</a>.</p></div><span class="lk">Read on VICE</span></a>
-<p class="cap">VICE India, social</p>
-<div class="edrow"><figure style="flex:0.619 1 0"><img src="images/editorial/vice-pride-reel-archive.jpg" alt="VICE India Pride reel: archival photos of an early Pride march in Calcutta" width="449" height="725" loading="lazy"></figure><figure style="flex:0.590 1 0"><img src="images/editorial/vice-pride-reel-host.jpg" alt="VICE India Pride reel: host explaining how different cities celebrate Pride marches" width="451" height="765" loading="lazy"></figure><div class="edtext"><span class="k">Reel &middot; VICE India &middot; June 2023</span><h3>Pride, across India</h3><p>A primer on the Pride marches and events around the country, and when to catch them. Produced by <a href="https://www.instagram.com/abhitundel/" target="_blank" rel="noopener">@abhitundel</a>, hosted by <a href="https://www.instagram.com/houseofnoronha/" target="_blank" rel="noopener">@houseofnoronha</a>, edited by <a href="https://www.instagram.com/kinda.silly/" target="_blank" rel="noopener">@kinda.silly</a>.</p><a class="lk" href="https://www.instagram.com/viceindia/" target="_blank" rel="noopener">VICE India on Instagram</a></div></div>
-<div class="edgrid"><div><figure style="flex:0.837 1 0"><img src="images/editorial/vice-zillennial.jpg" alt="VICE India carousel cover: What the f*ck is a Zillennial, and are you one?" width="596" height="712" loading="lazy"></figure><p class="ecap"><span class="k">Carousel &middot; June 2023</span><b>Zillennials, explained</b></p></div><div><figure style="flex:0.836 1 0"><img src="images/editorial/vice-doctor-visits.jpg" alt="VICE India carousel cover: People tell us their most awkward doctor visits. Ever." width="597" height="714" loading="lazy"></figure><p class="ecap"><span class="k">Carousel &middot; June 2023</span><b>Awkward doctor visits</b>Written by <a href="https://www.instagram.com/abhitundel/" target="_blank" rel="noopener">@abhitundel</a></p></div><div><figure style="flex:0.828 1 0"><img src="images/editorial/vice-worst-snakes.jpg" alt="VICE India carousel cover: The worst snakes (read: humans) we have ever met. Ever" width="643" height="777" loading="lazy"></figure><p class="ecap"><span class="k">Carousel &middot; December 2023</span><b>The worst snakes we have ever met</b>Written by <a href="https://www.instagram.com/abhitundel/" target="_blank" rel="noopener">@abhitundel</a></p></div></div>
-<p class="cap">Press, reviews and conversations</p>
-<div class="plist"><a class="prow" href="https://navhindtimes.in/zest/in-a-lighter-vein/" target="_blank" rel="noopener"><span class="d">Apr 2026</span><span class="o">The Navhind Times &middot; Zest</span><span class="t">In a lighter vein: the Goan Comedy Cartel</span><span class="y">Feature</span></a><a class="prow" href="https://archive.org/details/abhi-tundel-mumabi-mirror" target="_blank" rel="noopener"><span class="d">Aug 2025</span><span class="o">Mumbai Mirror &middot; Unwind</span><span class="t">A profile of Abhi Tundel and Above It All</span><span class="y">Feature</span></a><a class="prow" href="https://www.tokyoshortfilmfest.com/post/break-free-interview-abhi-tundel" target="_blank" rel="noopener"><span class="d">Jun 2025</span><span class="o">Tokyo International Short Film Festival</span><span class="t">Break Free: An Interview with Abhi Tundel</span><span class="y">Interview</span></a><a class="prow" href="https://filmdaily.co/news/the-cradle-a-horror-short-film-review/" target="_blank" rel="noopener"><span class="d">Jul 2023</span><span class="o">Film Daily</span><span class="t">The Cradle: A Horror Short Film Review</span><span class="y">Review</span></a><a class="prow" href="https://indiewrapmag.com/reviews/review-the-cradle-directed-by-abhi-tundel/" target="_blank" rel="noopener"><span class="d">&mdash;</span><span class="o">IndieWrap Magazine</span><span class="t">Review: The Cradle, directed by Abhi Tundel</span><span class="y">Review</span></a><a class="prow" href="https://news.theglobaltribune.com/story/384189/indias-first-nonenvironmental-carbon-neutral-film-shooting-commenced-under-the-banner-of-abhi-tundel.html" target="_blank" rel="noopener"><span class="d">&mdash;</span><span class="o">The Global Tribune</span><span class="t">Coverage of a film shoot under the banner of Abhi Tundel</span><span class="y">Coverage</span></a><a class="prow" href="https://www.vice.com/en/article/live-in-relationships-dating-cohabitation-marriage-india/" target="_blank" rel="noopener"><span class="d">Nov 2022</span><span class="o">VICE &middot; words by Navin Noronha</span><span class="t">What&rsquo;s it Like To Live Together as an Unmarried Couple in India? Couples Tell Us.</span><span class="y">Featured</span></a><a class="prow" href="https://open.spotify.com/episode/756CQGaOT2SmRDTOaTGQP8" target="_blank" rel="noopener"><span class="d">Apr 2019</span><span class="o">Dating Is Garbage &middot; IVM Podcasts</span><span class="t">Ep. 08: Dating Green Flags, as guests</span><span class="y">Podcast</span></a></div></section>
-<section id="contact" class="contact"><h2>Get in touch</h2><a href="mailto:abhi@smolcatfilms.com">abhi@smolcatfilms.com</a><a href="https://www.instagram.com/abhitundel/" target="_blank" rel="noopener">@abhitundel</a><a href="https://www.smolcatfilms.com" target="_blank" rel="noopener">smolcatfilms.com</a><a href="https://goancomedycartel.com" target="_blank" rel="noopener">goancomedycartel.com</a></section></main>
-<footer>&copy; 2026 Abhi Tundel. Goa, India.</footer><dialog id="lb"><img alt=""></dialog>
-<script>
-const rl=document.querySelector('.reel');rl.innerHTML+=rl.innerHTML;
-const lb=document.getElementById('lb'),li=lb.querySelector('img');
-document.querySelectorAll('figure img,.reel img').forEach(m=>m.addEventListener('click',()=>{li.src=m.src;li.alt=m.alt;lb.showModal()}));lb.onclick=()=>lb.close();
-document.querySelectorAll('.yt').forEach(b=>b.onclick=()=>{const f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; fullscreen';f.allowFullscreen=true;b.replaceWith(f);f.style.cssText='width:100%;aspect-ratio:16/9;border:0;display:block'});
-document.querySelectorAll('.site').forEach(s=>{const fr=s.querySelector('iframe');if(!fr)return;
-const set=m=>{s.querySelectorAll('.bar button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));if(m==='live'){if(!fr.src)fr.src=s.dataset.live;s.classList.add('live')}else s.classList.remove('live')};
-s.querySelectorAll('.bar button').forEach(b=>b.onclick=()=>set(b.dataset.m));if(s.querySelector('button.on').dataset.m==='live')set('live')});
+<p class="note">Awards were granted to Smol Cat Films by the respective festival organisers. Member of the South Asian Film Collective. Co-host of the podcast Just Ghar Se.</p>
+</section>
 
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px',threshold:.05});
-document.querySelectorAll('h2,.intro,.cap,figure,.feat>*,.card,.pcard,.site,.note,.contact a,.edtext,.ecap,.ftr,.prow').forEach(el=>{el.classList.add('rv');io.observe(el)});
+<!-- ========================= EDITORIAL ========================= -->
+
+<section id="editorial">
+
+<h2>Editorial</h2>
+
+<p class="intro">
+Writing for VICE, producing editorial social, and being written about for the work.
+</p>
+
+<p class="cap">Writing: VICE</p>
+
+<article class="article-preview rv">
+
+<div class="article-head">
+<span class="article-kicker">VICE Life &middot; 23 June 2023</span>
+
+<h3>What it&rsquo;s Like to Date a Stand-Up Comedian in India</h3>
+
+<p class="article-dek">
+Every comedian has dating material. Nobody asks the partner.
+</p>
+
+<p class="article-meta">
+Words by Abhi Tundel
+</p>
+
+<a class="lk article-link" href="https://www.vice.com/en/article/this-is-how-it-is-dating-a-stand-up-comedian-in-india/" target="_blank" rel="noopener">
+Continue reading on VICE
+</a>
+</div>
+
+<div class="article-copy">
+
+<p>
+Dating a comedian comes with a strange occupational hazard: eventually, you become material. The jokes might be about relationships, sex, arguments, bad habits or the tiny things that happen when nobody else is watching.
+</p>
+
+<p>
+For VICE, Abhi Tundel spoke to the people dating stand-up comedians about what it is actually like to be on the other side of the joke.
+</p>
+
+<p class="article-note">
+This is an excerpted preview of the piece. Read the complete article at VICE.
+</p>
+
+</div>
+
+</article>
+
+
+<div class="social-feature rv">
+
+<div class="social-feature-head">
+<div>
+<span class="article-kicker">VICE India &middot; Instagram</span>
+<h3>Pride, across India</h3>
+</div>
+
+<p class="social-feature-copy">
+A VICE India social reel about Pride marches and events across the country, produced by Abhi Tundel, hosted by Navin Noronha and edited by Kinda Silly.
+</p>
+</div>
+
+<div class="vice-reel">
+
+<div class="vice-reel-media">
+<iframe
+src="https://www.instagram.com/reel/CuHJjxcoebP/embed"
+title="VICE India Pride reel"
+loading="lazy"
+allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+allowfullscreen>
+</iframe>
+</div>
+
+<div class="vice-reel-copy">
+<span class="k">Reel &middot; June 2023</span>
+<p>
+A primer on Pride marches and events around India, and when to catch them.
+</p>
+
+<a class="lk" href="https://www.instagram.com/reel/CuHJjxcoebP/" target="_blank" rel="noopener">
+Open Reel on Instagram
+</a>
+</div>
+
+</div>
+</div>
+
+
+<p class="cap">VICE India, social</p>
+
+<div class="ig-heading rv">
+<div>
+<span class="article-kicker">Social editorial</span>
+<h3>Three more pieces from VICE India</h3>
+</div>
+
+<p>
+Editorial social work spanning explainers, personal stories and internet culture.
+The posts below stay on the page so the work can actually be read and scrolled.
+</p>
+</div>
+
+
+<div class="ig-posts">
+
+<article class="ig-post rv">
+
+<div class="ig-post-media">
+<blockquote
+class="instagram-media"
+data-instgrm-permalink="https://www.instagram.com/p/Ctto4trM9uT/"
+data-instgrm-version="14">
+</blockquote>
+</div>
+
+<div class="ig-post-copy">
+<span class="k">Carousel &middot; VICE India</span>
+<h4>Zillennials, explained</h4>
+<p>
+What the f*ck is a Zillennial, and are you one?
+</p>
+<a class="lk" href="https://www.instagram.com/p/Ctto4trM9uT/" target="_blank" rel="noopener">
+View post
+</a>
+</div>
+
+</article>
+
+
+<article class="ig-post rv">
+
+<div class="ig-post-media">
+<blockquote
+class="instagram-media"
+data-instgrm-permalink="https://www.instagram.com/p/Cta6kh4sgpl/"
+data-instgrm-version="14">
+</blockquote>
+</div>
+
+<div class="ig-post-copy">
+<span class="k">Carousel &middot; VICE India</span>
+<h4>Awkward doctor visits</h4>
+<p>
+People tell us their most awkward doctor visits. Ever.
+</p>
+<a class="lk" href="https://www.instagram.com/p/Cta6kh4sgpl/" target="_blank" rel="noopener">
+View post
+</a>
+</div>
+
+</article>
+
+
+<article class="ig-post rv">
+
+<div class="ig-post-media">
+<blockquote
+class="instagram-media"
+data-instgrm-permalink="https://www.instagram.com/p/CtzDjHdNfov/"
+data-instgrm-version="14">
+</blockquote>
+</div>
+
+<div class="ig-post-copy">
+<span class="k">Carousel &middot; VICE India</span>
+<h4>The worst snakes we have ever met</h4>
+<p>
+The worst snakes, read: humans, we have ever met.
+</p>
+<a class="lk" href="https://www.instagram.com/p/CtzDjHdNfov/" target="_blank" rel="noopener">
+View post
+</a>
+</div>
+
+</article>
+
+</div>
+
+
+<p class="cap">About Abhi</p>
+
+<div class="press-intro rv">
+
+<div>
+<span class="article-kicker">Profiles &middot; Reviews &middot; Conversations</span>
+<h3>Written about, interviewed, reviewed.</h3>
+</div>
+
+<p>
+A collection of profiles, interviews, reviews and conversations about Abhi Tundel, the films, the comedy work, and the projects around them.
+</p>
+
+</div>
+
+
+<div class="plist">
+
+<a class="prow rv" href="https://navhindtimes.in/zest/in-a-lighter-vein/" target="_blank" rel="noopener">
+<span class="d">Apr 2026</span>
+<span class="o">The Navhind Times &middot; Zest</span>
+<span class="t">In a lighter vein: the Goan Comedy Cartel</span>
+<span class="y">Profile</span>
+</a>
+
+<a class="prow rv" href="https://archive.org/details/abhi-tundel-mumabi-mirror" target="_blank" rel="noopener">
+<span class="d">Aug 2025</span>
+<span class="o">Mumbai Mirror &middot; Unwind</span>
+<span class="t">A profile of Abhi Tundel and Above It All</span>
+<span class="y">Profile</span>
+</a>
+
+<a class="prow rv" href="https://www.tokyoshortfilmfest.com/post/break-free-interview-abhi-tundel" target="_blank" rel="noopener">
+<span class="d">Jun 2025</span>
+<span class="o">Tokyo International Short Film Festival</span>
+<span class="t">Break Free: An Interview with Abhi Tundel</span>
+<span class="y">Interview</span>
+</a>
+
+<a class="prow rv" href="https://filmdaily.co/news/the-cradle-a-horror-short-film-review/" target="_blank" rel="noopener">
+<span class="d">Jul 2023</span>
+<span class="o">Film Daily</span>
+<span class="t">The Cradle: A Horror Short Film Review</span>
+<span class="y">Review</span>
+</a>
+
+<a class="prow rv" href="https://indiewrapmag.com/reviews/review-the-cradle-directed-by-abhi-tundel/" target="_blank" rel="noopener">
+<span class="d">&mdash;</span>
+<span class="o">IndieWrap Magazine</span>
+<span class="t">Review: The Cradle, directed by Abhi Tundel</span>
+<span class="y">Review</span>
+</a>
+
+<a class="prow rv" href="https://news.theglobaltribune.com/story/384189/indias-first-nonenvironmental-carbon-neutral-film-shooting-commenced-under-the-banner-of-abhi-tundel.html" target="_blank" rel="noopener">
+<span class="d">&mdash;</span>
+<span class="o">The Global Tribune</span>
+<span class="t">Coverage of a film shoot under the banner of Abhi Tundel</span>
+<span class="y">Coverage</span>
+</a>
+
+<a class="prow rv" href="https://www.vice.com/en/article/live-in-relationships-dating-cohabitation-marriage-india/" target="_blank" rel="noopener">
+<span class="d">Nov 2022</span>
+<span class="o">VICE &middot; words by Navin Noronha</span>
+<span class="t">What&rsquo;s it Like To Live Together as an Unmarried Couple in India? Couples Tell Us.</span>
+<span class="y">Featured</span>
+</a>
+
+<a class="prow rv" href="https://open.spotify.com/episode/756CQGaOT2SmRDTOaTGQP8" target="_blank" rel="noopener">
+<span class="d">Apr 2019</span>
+<span class="o">Dating Is Garbage &middot; IVM Podcasts</span>
+<span class="t">Ep. 08: Dating Green Flags, as guests</span>
+<span class="y">Podcast</span>
+</a>
+
+</div>
+
+</section>
+
+<section id="contact" class="contact">
+<h2>Get in touch</h2>
+<a href="mailto:abhi@smolcatfilms.com">abhi@smolcatfilms.com</a>
+<a href="https://www.instagram.com/abhitundel/" target="_blank" rel="noopener">@abhitundel</a>
+<a href="https://www.smolcatfilms.com" target="_blank" rel="noopener">smolcatfilms.com</a>
+<a href="https://goancomedycartel.com" target="_blank" rel="noopener">goancomedycartel.com</a>
+</section>
+
+</main>
+
+<footer>&copy; 2026 Abhi Tundel. Goa, India.</footer>
+
+<dialog id="lb"><img alt=""></dialog>
+
+<script>
+const rl=document.querySelector('.reel');
+rl.innerHTML+=rl.innerHTML;
+
+const lb=document.getElementById('lb'),li=lb.querySelector('img');
+
+document.querySelectorAll('figure img,.reel img').forEach(m=>m.addEventListener('click',()=>{
+li.src=m.src;
+li.alt=m.alt;
+lb.showModal()
+}));
+
+lb.onclick=()=>lb.close();
+
+document.querySelectorAll('.yt').forEach(b=>b.onclick=()=>{
+const f=document.createElement('iframe');
+f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0';
+f.allow='autoplay; encrypted-media; fullscreen';
+f.allowFullscreen=true;
+b.replaceWith(f);
+f.style.cssText='width:100%;aspect-ratio:16/9;border:0;display:block'
+});
+
+document.querySelectorAll('.site').forEach(s=>{
+const fr=s.querySelector('iframe');
+if(!fr)return;
+
+const set=m=>{
+s.querySelectorAll('.bar button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
+
+if(m==='live'){
+if(!fr.src)fr.src=s.dataset.live;
+s.classList.add('live')
+}else{
+s.classList.remove('live')
+}
+};
+
+s.querySelectorAll('.bar button').forEach(b=>b.onclick=()=>set(b.dataset.m));
+
+if(s.querySelector('button.on').dataset.m==='live')set('live')
+});
+
+/* scroll reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('in');
+io.unobserve(e.target)
+}
+}),{rootMargin:'0px 0px -8% 0px',threshold:.05});
+
+document.querySelectorAll(
+'h2,.intro,.cap,figure,.feat>*,.card,.pcard,.site,.note,.contact a,.article-preview,.social-feature,.ig-heading,.ig-post,.press-intro,.prow'
+).forEach(el=>{
+el.classList.add('rv');
+io.observe(el)
+});
 </script>
+
+<!-- Instagram embeds -->
+<script async src="https://www.instagram.com/embed.js"></script>
+
 <script>
 (function(){
+
 const root=document.documentElement,gate=document.getElementById('gate');
-if(!root.classList.contains('gated')){gate.remove();return}
-const rm=matchMedia('(prefers-reduced-motion:reduce)').matches,btn=gate.querySelector('.g-btn'),cv=gate.querySelector('canvas'),cx=cv.getContext('2d'),main=document.getElementById('top');
-const pg=[...document.querySelectorAll('.nav,main,footer')];pg.forEach(e=>e.inert=true);
+
+if(!root.classList.contains('gated')){
+gate.remove();
+return
+}
+
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches,
+btn=gate.querySelector('.g-btn'),
+cv=gate.querySelector('canvas'),
+cx=cv.getContext('2d'),
+main=document.getElementById('top');
+
+const pg=[...document.querySelectorAll('.nav,main,footer')];
+
+pg.forEach(e=>e.inert=true);
+
 /* matrix rain */
-const fs=16,ch='ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄ0123456789<>/{}[];=+*#$'.split('');let cols,dr,raf=0,last=0;
-function size(){const r=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*r;cv.height=innerHeight*r;cx.setTransform(r,0,0,r,0,0);cx.font=fs+'px "Geist Mono",monospace';cols=Math.ceil(innerWidth/fs);dr=Array.from({length:cols},()=>-Math.random()*40|0)}
-function draw(t){raf=requestAnimationFrame(draw);if(t-last<45)return;last=t;
-cx.fillStyle='rgba(2,8,5,.14)';cx.fillRect(0,0,innerWidth,innerHeight);
-for(let i=0;i<cols;i++){const y=dr[i]*fs;if(y>0){cx.fillStyle=Math.random()<.04?'#fff':'#5fe6a0';cx.fillText(ch[Math.random()*ch.length|0],i*fs,y)}
-if(y>innerHeight&&Math.random()>.975)dr[i]=0;dr[i]++}}
-if(!rm){size();addEventListener('resize',size);raf=requestAnimationFrame(draw)}
-/* synthesized sound: no files, opt-in */
-let ac,hum,snd=0;const snb=gate.querySelector('.g-snd'),AC=window.AudioContext||window.webkitAudioContext;
-function tone(f,d,v,ty){const t=ac.currentTime,o=ac.createOscillator(),g=ac.createGain();o.type=ty||'square';o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+d)}
-function tick(){if(snd)tone(1400+Math.random()*900,.03,.025)}
-function humOn(){const t=ac.currentTime,g=ac.createGain(),f=ac.createBiquadFilter(),a=ac.createOscillator(),b=ac.createOscillator(),l=ac.createOscillator(),lg=ac.createGain();
-a.type='sawtooth';a.frequency.value=55;b.frequency.value=82.4;f.type='lowpass';f.frequency.value=220;l.frequency.value=.15;lg.gain.value=90;l.connect(lg).connect(f.frequency);
-g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.06,t+1);a.connect(f);b.connect(f);f.connect(g).connect(ac.destination);[a,b,l].forEach(o=>o.start(t));hum={g,o:[a,b,l]}}
-function humOff(s){if(!hum)return;const t=ac.currentTime,h=hum;hum=null;h.g.gain.cancelScheduledValues(t);h.g.gain.setValueAtTime(h.g.gain.value,t);h.g.gain.linearRampToValueAtTime(0,t+s);h.o.forEach(o=>o.stop(t+s+.05))}
-function whoosh(){const t=ac.currentTime,o=ac.createOscillator(),g=ac.createGain(),f=ac.createBiquadFilter();o.type='sawtooth';o.frequency.setValueAtTime(70,t);o.frequency.exponentialRampToValueAtTime(1600,t+1);f.type='lowpass';f.frequency.setValueAtTime(300,t);f.frequency.exponentialRampToValueAtTime(5000,t+1);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.12,t+.25);g.gain.exponentialRampToValueAtTime(.0001,t+1.2);o.connect(f).connect(g).connect(ac.destination);o.start(t);o.stop(t+1.3);tone(880,.4,.05,'sine')}
-snb.addEventListener('click',()=>{snd=!snd;if(snd){ac=ac||new AC();ac.resume();humOn()}else humOff(.4);snb.textContent=snd?'Sound on':'Sound off'});
+
+const fs=16,
+ch='ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄ0123456789<>/{}[];=+*#$'.split('');
+
+let cols,dr,raf=0,last=0;
+
+function size(){
+const r=Math.min(devicePixelRatio||1,2);
+cv.width=innerWidth*r;
+cv.height=innerHeight*r;
+cx.setTransform(r,0,0,r,0,0);
+cx.font=fs+'px "Geist Mono",monospace';
+cols=Math.ceil(innerWidth/fs);
+dr=Array.from({length:cols},()=>-Math.random()*40|0)
+}
+
+function draw(t){
+raf=requestAnimationFrame(draw);
+
+if(t-last<45)return;
+
+last=t;
+
+cx.fillStyle='rgba(2,8,5,.14)';
+cx.fillRect(0,0,innerWidth,innerHeight);
+
+for(let i=0;i<cols;i++){
+const y=dr[i]*fs;
+
+if(y>0){
+cx.fillStyle=Math.random()<.04?'#fff':'#5fe6a0';
+cx.fillText(ch[Math.random()*ch.length|0],i*fs,y)
+}
+
+if(y>innerHeight&&Math.random()>.975)dr[i]=0;
+
+dr[i]++
+}
+}
+
+if(!rm){
+size();
+addEventListener('resize',size);
+raf=requestAnimationFrame(draw)
+}
+
+/* synthesized sound */
+
+let ac,hum,snd=0;
+
+const snb=gate.querySelector('.g-snd'),
+AC=window.AudioContext||window.webkitAudioContext;
+
+function tone(f,d,v,ty){
+const t=ac.currentTime,
+o=ac.createOscillator(),
+g=ac.createGain();
+
+o.type=ty||'square';
+o.frequency.value=f;
+
+g.gain.setValueAtTime(v,t);
+g.gain.exponentialRampToValueAtTime(.0001,t+d);
+
+o.connect(g).connect(ac.destination);
+o.start(t);
+o.stop(t+d)
+}
+
+function tick(){
+if(snd)tone(1400+Math.random()*900,.03,.025)
+}
+
+function humOn(){
+const t=ac.currentTime,
+g=ac.createGain(),
+f=ac.createBiquadFilter(),
+a=ac.createOscillator(),
+b=ac.createOscillator(),
+l=ac.createOscillator(),
+lg=ac.createGain();
+
+a.type='sawtooth';
+a.frequency.value=55;
+b.frequency.value=82.4;
+
+f.type='lowpass';
+f.frequency.value=220;
+
+l.frequency.value=.15;
+lg.gain.value=90;
+
+l.connect(lg).connect(f.frequency);
+
+g.gain.setValueAtTime(0,t);
+g.gain.linearRampToValueAtTime(.06,t+1);
+
+a.connect(f);
+b.connect(f);
+f.connect(g).connect(ac.destination);
+
+[a,b,l].forEach(o=>o.start(t));
+
+hum={g,o:[a,b,l]}
+}
+
+function humOff(s){
+if(!hum)return;
+
+const t=ac.currentTime,
+h=hum;
+
+hum=null;
+
+h.g.gain.cancelScheduledValues(t);
+h.g.gain.setValueAtTime(h.g.gain.value,t);
+h.g.gain.linearRampToValueAtTime(0,t+s);
+
+h.o.forEach(o=>o.stop(t+s+.05))
+}
+
+function whoosh(){
+const t=ac.currentTime,
+o=ac.createOscillator(),
+g=ac.createGain(),
+f=ac.createBiquadFilter();
+
+o.type='sawtooth';
+o.frequency.setValueAtTime(70,t);
+o.frequency.exponentialRampToValueAtTime(1600,t+1);
+
+f.type='lowpass';
+f.frequency.setValueAtTime(300,t);
+f.frequency.exponentialRampToValueAtTime(5000,t+1);
+
+g.gain.setValueAtTime(0,t);
+g.gain.linearRampToValueAtTime(.12,t+.25);
+g.gain.exponentialRampToValueAtTime(.0001,t+1.2);
+
+o.connect(f).connect(g).connect(ac.destination);
+o.start(t);
+o.stop(t+1.3);
+
+tone(880,.4,.05,'sine')
+}
+
+snb.addEventListener('click',()=>{
+snd=!snd;
+
+if(snd){
+ac=ac||new AC();
+ac.resume();
+humOn()
+}else{
+humOff(.4)
+}
+
+snb.textContent=snd?'Sound on':'Sound off'
+});
+
 if(!AC)snb.remove();
+
 /* typed boot text */
-let fast=rm,done=0;const cur=document.createElement('i');cur.className='cur';
+
+let fast=rm,done=0;
+
+const cur=document.createElement('i');
+cur.className='cur';
+
 const sleep=ms=>fast?0:new Promise(r=>setTimeout(r,ms));
-async function type(el){const t=el.dataset.t,ms=(el.dataset.ms|0)||22;el.parentNode.classList.add('on');el.after(cur);
-if(!fast)for(let i=1;i<=t.length&&!fast;i++){el.textContent=t.slice(0,i);tick();await sleep(ms)}
-el.textContent=t}
-async function boot(){await sleep(350);
-for(const el of gate.querySelectorAll('[data-t]')){await type(el);await sleep(el.dataset.p|0)}
-btn.classList.add('on');btn.focus({preventScroll:true})}
-function enter(){if(done)return;done=1;fast=true;gate.classList.add('out');cur.remove();if(snd){whoosh();humOff(.9);setTimeout(()=>ac.close(),2500)}
-setTimeout(()=>{cancelAnimationFrame(raf);gate.remove();root.classList.remove('gated');pg.forEach(e=>e.inert=false);main.tabIndex=-1;scrollTo(0,0);main.focus({preventScroll:true})},rm?0:1300)}
+
+async function type(el){
+
+const t=el.dataset.t,
+ms=(el.dataset.ms|0)||22;
+
+el.parentNode.classList.add('on');
+el.after(cur);
+
+if(!fast)
+for(let i=1;i<=t.length&&!fast;i++){
+el.textContent=t.slice(0,i);
+tick();
+await sleep(ms)
+}
+
+el.textContent=t
+}
+
+async function boot(){
+
+await sleep(350);
+
+for(const el of gate.querySelectorAll('[data-t]')){
+await type(el);
+await sleep(el.dataset.p|0)
+}
+
+btn.classList.add('on');
+btn.focus({preventScroll:true})
+}
+
+function enter(){
+
+if(done)return;
+
+done=1;
+fast=true;
+
+gate.classList.add('out');
+cur.remove();
+
+if(snd){
+whoosh();
+humOff(.9);
+setTimeout(()=>ac.close(),2500)
+}
+
+setTimeout(()=>{
+cancelAnimationFrame(raf);
+gate.remove();
+root.classList.remove('gated');
+pg.forEach(e=>e.inert=false);
+main.tabIndex=-1;
+scrollTo(0,0);
+main.focus({preventScroll:true})
+},rm?0:1300)
+}
+
 btn.addEventListener('click',enter);
-gate.querySelector('.g-skip').addEventListener('click',()=>{fast=true});
-gate.addEventListener('pointerdown',e=>{if(!e.target.closest('.g-btn,.g-hud'))fast=true});
-document.addEventListener('keydown',e=>{if(done||e.target.closest('.g-hud'))return;if(e.key==='Enter'&&btn.classList.contains('on'))enter();else if(e.key!=='Tab')fast=true});
-boot()})();
-</script></body></html>
+
+gate.querySelector('.g-skip').addEventListener('click',()=>{
+fast=true
+});
+
+gate.addEventListener('pointerdown',e=>{
+if(!e.target.closest('.g-btn,.g-hud'))fast=true
+});
+
+document.addEventListener('keydown',e=>{
+if(done||e.target.closest('.g-hud'))return;
+
+if(e.key==='Enter'&&btn.classList.contains('on'))enter();
+else if(e.key!=='Tab')fast=true
+});
+
+boot()
+
+})();
+</script>
+
+</body></html>
