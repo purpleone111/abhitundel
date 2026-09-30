@@ -179,16 +179,13 @@ section{transition:background .4s}
 #web .sites{grid-template-columns:repeat(12,minmax(0,1fr))}
 #web .site{grid-column:span 6;min-width:0}
 #web .site.tall{grid-column:1/-1}
-#web .site.s7{grid-column:span 7}
-#web .site.s5{grid-column:span 5}
 #web .site .screen{aspect-ratio:16/10;min-height:0}
-#web .site.tall .screen{aspect-ratio:16/9}
-#web .site.s7 .screen,#web .site.s5 .screen{aspect-ratio:auto;height:clamp(380px,36vw,540px)}
+#web .site.tall .screen{aspect-ratio:auto;height:clamp(400px,40vw,520px)}
 #web .screen iframe{transform-origin:0 0}
 @media(max-width:800px){
 #web .sites{grid-template-columns:1fr}
-#web .site,#web .site.tall,#web .site.s7,#web .site.s5{grid-column:1/-1}
-#web .site .screen,#web .site.tall .screen,#web .site.s7 .screen,#web .site.s5 .screen{aspect-ratio:auto;height:72vh;min-height:460px}
+#web .site,#web .site.tall{grid-column:1/-1}
+#web .site .screen,#web .site.tall .screen{aspect-ratio:auto;height:72vh;min-height:460px}
 }
 
 /* WEB polish */
@@ -418,14 +415,14 @@ main:focus{outline:none}
 <section id="web"><h2>Web</h2><p class="intro">Sites I built for clients and for myself, a style picker for choosing a look, and a game I am making. Most of them run live right here.</p>
 <div class="sites">
 
-<div class="site tall" data-vw="1280" data-live="https://goancomedycartel.com">
+<div class="site" data-vw="1024" data-live="https://goancomedycartel.com">
 <div class="bar"><span>goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="https://goancomedycartel.com/Social-Image.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="Goan Comedy Cartel" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Goan Comedy Cartel</h3><div class="tags"><i>Co-founded</i><i>Brand + site</i></div><p>The site for the comedy collective I co-founded.</p></div>
 </div>
 
-<div class="site" data-vw="1024" data-live="https://navin.goancomedycartel.com">
-<div class="bar"><span>navin.goancomedycartel.com</span><div><button data-m="live">Live</button><button data-m="prev" class="on">Preview</button><a href="https://navin.goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="site" data-vw="960" data-live="https://navin.goancomedycartel.com">
+<div class="bar"><span>navin.goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://navin.goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="images/web/navin.jpg" onerror="this.src='images/deck/navin-portfolio-cover.jpg'" alt="navin.goancomedycartel.com preview"><iframe title="Navin Noronha's Portfolio" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Navin Noronha&rsquo;s Portfolio</h3><div class="tags"><i>Client</i><i>Portfolio</i></div><p>A portfolio site for stand-up comedian Navin Noronha.</p></div>
 </div>
@@ -440,16 +437,16 @@ main:focus{outline:none}
 <div class="meta"><h3>Smol Cat Films</h3><div class="tags"><i>Studio</i><i>Own site</i></div><p>The site for my film studio. It opens in its own tab.</p></div>
 </div>
 
-<div class="site s7" data-vw="1100" data-live="https://style.smolcatfilms.com/">
-<div class="bar"><span>style.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
-<div class="screen"><iframe title="Style Picker" loading="lazy" allow="fullscreen"></iframe></div>
-<div class="meta"><h3>Style Picker</h3><div class="tags"><i>Tool</i><i>For clients</i></div><p>A tool for clients: try 26 palettes, type pairings and six layouts on a sample site, then email me the picks.</p></div>
-</div>
-
-<div class="site s5" data-live="https://purpleone111.github.io/game_test/">
+<div class="site" data-live="https://purpleone111.github.io/game_test/">
 <div class="bar"><span>purpleone111.github.io/game_test</span><div><button data-m="live" class="on">Live</button><a href="https://purpleone111.github.io/game_test/" target="_blank" rel="noopener">Open game</a></div></div>
 <div class="screen"><iframe title="ONE MORE, an endless orbs game" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>ONE MORE</h3><div class="tags"><i>Game</i><i>In progress</i></div><p>An endless orbs game I am making. Clear touching orbs to buy more time.</p></div>
+</div>
+
+<div class="site tall" data-vw="1200" data-live="https://style.smolcatfilms.com/">
+<div class="bar"><span>style.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="screen"><iframe title="Style Picker" loading="lazy" allow="fullscreen"></iframe></div>
+<div class="meta"><h3>Style Picker</h3><div class="tags"><i>Tool</i><i>For clients</i></div><p>A tool for clients: try 26 palettes, type pairings and six layouts on a sample site, then email me the picks.</p></div>
 </div>
 
 </div>
