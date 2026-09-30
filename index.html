@@ -66,8 +66,21 @@ figure:hover img{transform:scale(1.025);filter:none}
 
 /* web */
 .sites{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-.sites .site.wide{grid-column:1/-1}
-.site.wide .screen{aspect-ratio:16/8}
+.sites{gap:64px 32px}
+.site.tall{grid-column:1/-1}
+.site.tall .screen{aspect-ratio:16/10;min-height:560px}
+.site.r43 .screen{aspect-ratio:4/3}
+.meta{padding:20px 2px 0}
+.meta h3{font:400 clamp(26px,2.4vw,34px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.01em}
+.meta p{color:var(--mut);font-size:15px;line-height:1.55;margin:0;max-width:34em}
+.web-foot{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px 6vw;align-items:start;margin-top:12vh;padding-top:24px;border-top:1px solid var(--ln)}
+.web-foot .note{margin:0}
+.web-foot .cta{margin:0 0 14px}
+@media(max-width:800px){
+.site.tall .screen{aspect-ratio:auto;height:78vh;min-height:520px}
+.site.r43 .screen{aspect-ratio:4/5}
+.web-foot{grid-template-columns:1fr}
+}
 .bar{min-height:62px;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--card);border:1px solid var(--ln);border-bottom:0;border-radius:12px 12px 0 0;font:400 12px var(--mono);letter-spacing:.04em;color:var(--mut)}
 .bar span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);margin-right:10px;box-shadow:0 0 10px var(--acc)}
 .bar div{display:flex;gap:8px;align-items:center}
@@ -339,35 +352,51 @@ main:focus{outline:none}
 </div>
 </section>
 
-<section id="web"><h2>Web</h2><p class="intro">Sites I built for clients, a style picker for choosing a look, and a game I am making. All of them run live inside this page, or open any in its own tab.</p>
+<section id="web"><h2>Web</h2><p class="intro">Sites I built for clients and for myself, a style picker for choosing a look, and a game I am making. Most of them run live right here.</p>
 <div class="sites">
+
 <div class="site" data-live="https://goancomedycartel.com">
-<div class="bar"><span>Goan Comedy Cartel</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
-<div class="screen"><img class="prev" src="https://goancomedycartel.com/Social-Image.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="goancomedycartel.com" loading="lazy" allow="fullscreen"></iframe></div>
+<div class="bar"><span>goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="screen"><img class="prev" src="https://goancomedycartel.com/Social-Image.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="Goan Comedy Cartel" loading="lazy" allow="fullscreen"></iframe></div>
+<div class="meta"><h3>Goan Comedy Cartel</h3><p>The site for the comedy collective I co-founded.</p></div>
 </div>
-<div class="site">
-<div class="bar"><span>Smol Cat Films</span><div><a href="https://www.smolcatfilms.com" target="_blank" rel="noopener">Open site</a></div></div>
+
+<div class="site" data-live="https://navin.goancomedycartel.com">
+<div class="bar"><span>navin.goancomedycartel.com</span><div><button data-m="live">Live</button><button data-m="prev" class="on">Preview</button><a href="https://navin.goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="screen"><img class="prev" src="images/web/navin.jpg" onerror="this.src='images/deck/navin-portfolio-cover.jpg'" alt="navin.goancomedycartel.com preview"><iframe title="Navin Noronha's Portfolio" loading="lazy" allow="fullscreen"></iframe></div>
+<div class="meta"><h3>Navin Noronha&rsquo;s Portfolio</h3><p>A portfolio site for stand-up comedian Navin Noronha.</p></div>
+</div>
+
+<div class="site tall" data-live="https://style.smolcatfilms.com/">
+<div class="bar"><span>style.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="screen"><iframe title="Style Picker" loading="lazy" allow="fullscreen"></iframe></div>
+<div class="meta"><h3>Style Picker</h3><p>A tool for clients: try 26 palettes, type pairings and six layouts on a sample site, then email me the picks.</p></div>
+</div>
+
+<div class="site r43">
+<div class="bar"><span>smolcatfilms.com</span><div><a href="https://www.smolcatfilms.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen">
 <a class="mock" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/brand/smol-cat-films-mascot.jpg" alt=""><span>Born this stray!</span></a>
 <a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/web/smolcatfilms.jpg" alt="smolcatfilms.com preview" onerror="this.parentNode.remove()"></a>
 <a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><video autoplay muted loop playsinline preload="metadata"><source src="images/web/smolcatfilms.mp4" type="video/mp4" onerror="this.closest('.shot').remove()"></video></a>
 </div>
+<div class="meta"><h3>Smol Cat Films</h3><p>The site for my film studio. It opens in its own tab.</p></div>
 </div>
-<div class="site" data-live="https://navin.goancomedycartel.com">
-<div class="bar"><span>Navin Noronha's Portfolio</span><div><button data-m="live">Live</button><button data-m="prev" class="on">Preview</button><a href="https://navin.goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
-<div class="screen"><img class="prev" src="images/web/navin.jpg" onerror="this.src='images/deck/navin-portfolio-cover.jpg'" alt="navin.goancomedycartel.com preview"><iframe title="navin.goancomedycartel.com" loading="lazy" allow="fullscreen"></iframe></div>
-</div>
-<div class="site" data-live="https://style.smolcatfilms.com/">
-<div class="bar"><span>Style Picker</span><div><button data-m="live" class="on">Live</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
-<div class="screen"><iframe title="Style picker for clients" loading="lazy" allow="fullscreen"></iframe></div>
-</div>
-<div class="site" data-live="https://purpleone111.github.io/game_test/">
-<div class="bar"><span>ONE MORE (Game)</span><div><button data-m="live" class="on">Live</button><a href="https://purpleone111.github.io/game_test/" target="_blank" rel="noopener">Open site</a></div></div>
+
+<div class="site r43" data-live="https://purpleone111.github.io/game_test/">
+<div class="bar"><span>purpleone111.github.io/game_test</span><div><button data-m="live" class="on">Live</button><a href="https://purpleone111.github.io/game_test/" target="_blank" rel="noopener">Open game</a></div></div>
 <div class="screen"><iframe title="ONE MORE, an endless orbs game" loading="lazy" allow="fullscreen"></iframe></div>
+<div class="meta"><h3>ONE MORE</h3><p>An endless orbs game I am making. Clear touching orbs to buy more time.</p></div>
 </div>
+
 </div>
+<div class="web-foot">
 <p class="note">Goan Comedy Cartel, Navin Noronha&rsquo;s Portfolio, the Style Picker and ONE MORE run live inside this page. Smol Cat Films opens in its own tab, because its host does not allow it to be shown inside another page. If a frame stays blank, tap Open site.</p>
-<p class="note cta"><a class="lk" href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Pick your look with the style picker</a> &nbsp;&nbsp; <a class="lk" href="mailto:abhi@smolcatfilms.com?subject=Website%20project">Need a portfolio site for your act or practice? Let&rsquo;s talk</a></p>
+<div>
+<p class="cta"><a class="lk" href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Pick your look with the style picker</a></p>
+<p class="cta"><a class="lk" href="mailto:abhi@smolcatfilms.com?subject=Website%20project">Need a portfolio site for your act or practice? Let&rsquo;s talk</a></p>
+</div>
+</div>
 </section>
 
 <section id="design"><h2>Design</h2><p class="intro">Posters and brand identity for live comedy and independent film.</p>
@@ -726,7 +755,7 @@ io.unobserve(e.target)
 }),{rootMargin:'0px 0px -8% 0px',threshold:.05});
 
 document.querySelectorAll(
-'h2,.intro,.cap,figure,.feat>*,.card,.pcard,.site,.note,.contact a,.article-preview,.social-feature,.ig-heading,.ig-post,.press-intro,.prow'
+'h2,.intro,.cap,figure,.feat>*,.card,.pcard,.site,.meta,.note,.contact a,.article-preview,.social-feature,.ig-heading,.ig-post,.press-intro,.prow'
 ).forEach(el=>{
 el.classList.add('rv');
 io.observe(el)
