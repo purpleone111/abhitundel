@@ -118,6 +118,17 @@ dialog::backdrop{background:rgba(5,5,6,.94);backdrop-filter:blur(6px)}
 dialog img{max-height:94vh;margin:auto;border-radius:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 
+/* scale iframes to a virtual desktop width */
+const fit=()=>document.querySelectorAll('#web .site').forEach(st=>{
+const fr=st.querySelector('iframe'),sc=st.querySelector('.screen'),vw=+st.dataset.vw||0;
+if(!fr)return;
+if(!vw||innerWidth<=800){fr.style.width=fr.style.height=fr.style.transform='';return}
+const k=sc.clientWidth/vw;
+fr.style.width=vw+'px';fr.style.height=(sc.clientHeight/k)+'px';fr.style.transform='scale('+k+')'
+});
+fit();addEventListener('resize',fit);addEventListener('load',fit);
+if(window.ResizeObserver){const ro=new ResizeObserver(fit);document.querySelectorAll('#web .screen').forEach(e=>ro.observe(e))}
+
 /* scroll reveal */
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -163,6 +174,45 @@ section{transition:background .4s}
 #web .screen{border-color:rgba(125,255,180,.25);box-shadow:0 0 60px -20px rgba(125,255,180,.35)}
 #web .bar button.on{background:var(--acc);border-color:var(--acc);color:#04120a}
 @keyframes blink{50%{opacity:0}}
+
+/* WEB sizing: 12-col grid, consistent ratios */
+#web .sites{grid-template-columns:repeat(12,minmax(0,1fr))}
+#web .site{grid-column:span 6;min-width:0}
+#web .site.tall{grid-column:1/-1}
+#web .site.s7{grid-column:span 7}
+#web .site.s5{grid-column:span 5}
+#web .site .screen{aspect-ratio:16/10;min-height:0}
+#web .site.tall .screen{aspect-ratio:16/9}
+#web .site.s7 .screen,#web .site.s5 .screen{aspect-ratio:auto;height:clamp(380px,36vw,540px)}
+#web .screen iframe{transform-origin:0 0}
+@media(max-width:800px){
+#web .sites{grid-template-columns:1fr}
+#web .site,#web .site.tall,#web .site.s7,#web .site.s5{grid-column:1/-1}
+#web .site .screen,#web .site.tall .screen,#web .site.s7 .screen,#web .site.s5 .screen{aspect-ratio:auto;height:72vh;min-height:460px}
+}
+
+/* WEB polish */
+#web .sites{counter-reset:s;gap:72px 36px}
+#web .site{position:relative}
+#web .bar{padding:12px 18px;border-radius:14px 14px 0 0;background:linear-gradient(180deg,#101c17,#0b1310);color:#a9c4b6;letter-spacing:.03em}
+#web .bar span{display:flex;align-items:center;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#web .bar span::before{width:9px;height:9px;margin-right:46px;flex:none;background:#2a3a33;box-shadow:16px 0 0 #2a3a33,32px 0 0 #2a3a33;transition:all .4s var(--ease)}
+#web .site:hover .bar span::before{background:#ff6b5e;box-shadow:16px 0 0 #ffc24a,32px 0 0 var(--acc)}
+#web .bar a::after{content:" \2197"}
+#web .screen{border-radius:0 0 14px 14px;transition:border-color .4s,box-shadow .5s}
+#web .screen::before{content:"connecting_";position:absolute;inset:0;display:grid;place-items:center;font:400 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+#web .site:hover .screen{border-color:rgba(125,255,180,.6);box-shadow:0 0 90px -18px rgba(125,255,180,.5)}
+#web .meta{display:grid;grid-template-columns:1fr auto;gap:6px 24px;align-items:start;padding:22px 2px 0}
+#web .meta h3::before{counter-increment:s;content:"0" counter(s) " /";display:block;font:400 12px/1 var(--mono);letter-spacing:.14em;color:var(--acc);margin:0 0 12px}
+#web .meta p{grid-column:1}
+#web .tags{grid-column:2;grid-row:1;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px}
+#web .tags i{font:400 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:var(--acc);border:1px solid rgba(125,255,180,.3);border-radius:20px;padding:6px 10px;white-space:nowrap}
+#web .web-foot{border-top:1px dashed rgba(125,255,180,.3)}
+#web .cta a{font:500 13px var(--mono);letter-spacing:.06em;color:var(--acc);text-decoration:none;border-bottom:1px solid rgba(125,255,180,.35);padding-bottom:3px;transition:border-color .3s}
+#web .cta a:hover{border-color:var(--acc)}
+#web .cta a::before{content:"> ";opacity:.6}
+@media(max-width:800px){#web .meta{grid-template-columns:1fr}#web .tags{grid-column:1;grid-row:auto;justify-content:flex-start;margin:8px 0 0}#web .bar span::before{margin-right:44px}}
+
 
 /* CONTACT */
 .contact{--ink:#0a0a0b;--mut:#4a4536;--ln:rgba(10,10,11,.28);--acc:#0a0a0b;background:#e9d8a6;color:var(--ink);padding-bottom:12vh}
@@ -368,38 +418,38 @@ main:focus{outline:none}
 <section id="web"><h2>Web</h2><p class="intro">Sites I built for clients and for myself, a style picker for choosing a look, and a game I am making. Most of them run live right here.</p>
 <div class="sites">
 
-<div class="site" data-live="https://goancomedycartel.com">
+<div class="site tall" data-vw="1280" data-live="https://goancomedycartel.com">
 <div class="bar"><span>goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="https://goancomedycartel.com/Social-Image.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="Goan Comedy Cartel" loading="lazy" allow="fullscreen"></iframe></div>
-<div class="meta"><h3>Goan Comedy Cartel</h3><p>The site for the comedy collective I co-founded.</p></div>
+<div class="meta"><h3>Goan Comedy Cartel</h3><div class="tags"><i>Co-founded</i><i>Brand + site</i></div><p>The site for the comedy collective I co-founded.</p></div>
 </div>
 
-<div class="site" data-live="https://navin.goancomedycartel.com">
+<div class="site" data-vw="1024" data-live="https://navin.goancomedycartel.com">
 <div class="bar"><span>navin.goancomedycartel.com</span><div><button data-m="live">Live</button><button data-m="prev" class="on">Preview</button><a href="https://navin.goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="images/web/navin.jpg" onerror="this.src='images/deck/navin-portfolio-cover.jpg'" alt="navin.goancomedycartel.com preview"><iframe title="Navin Noronha's Portfolio" loading="lazy" allow="fullscreen"></iframe></div>
-<div class="meta"><h3>Navin Noronha&rsquo;s Portfolio</h3><p>A portfolio site for stand-up comedian Navin Noronha.</p></div>
+<div class="meta"><h3>Navin Noronha&rsquo;s Portfolio</h3><div class="tags"><i>Client</i><i>Portfolio</i></div><p>A portfolio site for stand-up comedian Navin Noronha.</p></div>
 </div>
 
-<div class="site tall" data-live="https://style.smolcatfilms.com/">
-<div class="bar"><span>style.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
-<div class="screen"><iframe title="Style Picker" loading="lazy" allow="fullscreen"></iframe></div>
-<div class="meta"><h3>Style Picker</h3><p>A tool for clients: try 26 palettes, type pairings and six layouts on a sample site, then email me the picks.</p></div>
-</div>
-
-<div class="site r43">
+<div class="site">
 <div class="bar"><span>smolcatfilms.com</span><div><a href="https://www.smolcatfilms.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen">
 <a class="mock" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/brand/smol-cat-films-mascot.jpg" alt=""><span>Born this stray!</span></a>
 <a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/web/smolcatfilms.jpg" alt="smolcatfilms.com preview" onerror="this.parentNode.remove()"></a>
 <a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><video autoplay muted loop playsinline preload="metadata"><source src="images/web/smolcatfilms.mp4" type="video/mp4" onerror="this.closest('.shot').remove()"></video></a>
 </div>
-<div class="meta"><h3>Smol Cat Films</h3><p>The site for my film studio. It opens in its own tab.</p></div>
+<div class="meta"><h3>Smol Cat Films</h3><div class="tags"><i>Studio</i><i>Own site</i></div><p>The site for my film studio. It opens in its own tab.</p></div>
 </div>
 
-<div class="site r43" data-live="https://purpleone111.github.io/game_test/">
+<div class="site s7" data-vw="1100" data-live="https://style.smolcatfilms.com/">
+<div class="bar"><span>style.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="screen"><iframe title="Style Picker" loading="lazy" allow="fullscreen"></iframe></div>
+<div class="meta"><h3>Style Picker</h3><div class="tags"><i>Tool</i><i>For clients</i></div><p>A tool for clients: try 26 palettes, type pairings and six layouts on a sample site, then email me the picks.</p></div>
+</div>
+
+<div class="site s5" data-live="https://purpleone111.github.io/game_test/">
 <div class="bar"><span>purpleone111.github.io/game_test</span><div><button data-m="live" class="on">Live</button><a href="https://purpleone111.github.io/game_test/" target="_blank" rel="noopener">Open game</a></div></div>
 <div class="screen"><iframe title="ONE MORE, an endless orbs game" loading="lazy" allow="fullscreen"></iframe></div>
-<div class="meta"><h3>ONE MORE</h3><p>An endless orbs game I am making. Clear touching orbs to buy more time.</p></div>
+<div class="meta"><h3>ONE MORE</h3><div class="tags"><i>Game</i><i>In progress</i></div><p>An endless orbs game I am making. Clear touching orbs to buy more time.</p></div>
 </div>
 
 </div>
@@ -756,7 +806,10 @@ s.classList.remove('live')
 
 s.querySelectorAll('.bar button').forEach(b=>b.onclick=()=>set(b.dataset.m));
 
-if(s.querySelector('button.on').dataset.m==='live')set('live')
+if(s.querySelector('button.on').dataset.m==='live'){
+const lz=new IntersectionObserver(es=>{if(es[0].isIntersecting){set('live');lz.disconnect()}},{rootMargin:'400px 0px'});
+lz.observe(s)
+}
 });
 
 /* scroll reveal */
