@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="theme-color" content="#0a0a0b"><script>(function(){var c=document.documentElement.classList;c.add("js");if(!location.hash||location.hash==="#top")c.add("gated")})()</script><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Abhi Tundel | Web Developer, Designer, Director</title><meta name="description" content="Portfolio of Abhi Tundel, Goa, India: web (goancomedycartel.com, smolcatfilms.com), design, film (Above It All, The Cradle, Break Free) and editorial for VICE India.">
+<title>Abhi Tundel | Web Developer, Designer, Director</title><meta name="description" content="Portfolio of Abhi Tundel, Goa, India: web (goancomedycartel.com, navin.goancomedycartel.com, smolcatfilms.com), design, film (Above It All, The Cradle, Break Free) and editorial for VICE India.">
 <meta property="og:title" content="Abhi Tundel"><meta property="og:description" content="Design, film, editorial and web. Goa, India.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -66,6 +66,8 @@ figure:hover img{transform:scale(1.025);filter:none}
 
 /* web */
 .sites{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.sites .site.wide{grid-column:1/-1}
+.site.wide .screen{aspect-ratio:16/8}
 .bar{min-height:62px;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--card);border:1px solid var(--ln);border-bottom:0;border-radius:12px 12px 0 0;font:400 12px var(--mono);letter-spacing:.04em;color:var(--mut)}
 .bar span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);margin-right:10px;box-shadow:0 0 10px var(--acc)}
 .bar div{display:flex;gap:8px;align-items:center}
@@ -337,7 +339,7 @@ main:focus{outline:none}
 </div>
 </section>
 
-<section id="web"><h2>Web</h2><p class="intro">Two sites I built, running live inside this page. Scroll goancomedycartel.com right here, or open either one.</p>
+<section id="web"><h2>Web</h2><p class="intro">Three sites I built. Scroll goancomedycartel.com and Navin Noronha's portfolio right here in the page, or open any of them.</p>
 <div class="sites">
 <div class="site" data-live="https://goancomedycartel.com">
 <div class="bar"><span>goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
@@ -351,19 +353,20 @@ main:focus{outline:none}
 <a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><video autoplay muted loop playsinline preload="metadata"><source src="images/web/smolcatfilms.mp4" type="video/mp4" onerror="this.closest('.shot').remove()"></video></a>
 </div>
 </div>
+<div class="site wide" data-live="https://navin.goancomedycartel.com">
+<div class="bar"><span>navin.goancomedycartel.com</span><div><button data-m="live">Live</button><button data-m="prev" class="on">Preview</button><a href="https://navin.goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="screen"><img class="prev" src="images/web/navin.jpg" onerror="this.src='images/deck/navin-portfolio-cover.jpg'" alt="navin.goancomedycartel.com preview"><iframe title="navin.goancomedycartel.com" loading="lazy" allow="fullscreen"></iframe></div>
 </div>
-<p class="note">goancomedycartel.com runs live inside this page. smolcatfilms.com opens in its own tab, because its host does not allow it to be shown inside another page. If the goancomedycartel.com frame stays blank, switch to Preview or tap Open site.</p>
-<p class="note cta"><a class="lk" href="mailto:abhi@smolcatfilms.com?subject=Website%20project">Need a website? Let&rsquo;s talk</a></p>
+</div>
+<p class="note">goancomedycartel.com and navin.goancomedycartel.com run live inside this page. smolcatfilms.com opens in its own tab, because its host does not allow it to be shown inside another page. If a frame stays blank, switch to Preview or tap Open site.</p>
+<p class="note cta"><a class="lk" href="mailto:abhi@smolcatfilms.com?subject=Website%20project">Need a portfolio site for your act or practice? Let&rsquo;s talk</a></p>
 </section>
 
-<section id="design"><h2>Design</h2><p class="intro">Posters, brand identity and decks for live comedy and independent film.</p>
+<section id="design"><h2>Design</h2><p class="intro">Posters and brand identity for live comedy and independent film.</p>
 <div class="row"><figure style="flex:0.773 1 0"><img src="images/design/goas-finest.jpg" alt="Goa's Finest poster" width="850" height="1100" loading="lazy"></figure><figure style="flex:0.800 1 0"><img src="images/design/qrc-lineup-pink.jpg" alt="Queer Rated Comedy lineup poster, pink" width="540" height="675" loading="lazy"></figure><figure style="flex:0.800 1 0"><img src="images/design/superhero-pop-quiz.jpg" alt="The Very Fun Pop Quiz, superhero films, poster" width="1080" height="1350" loading="lazy"></figure></div>
 <div class="row"><figure style="flex:0.707 1 0"><img src="images/design/qrc-lineup-green.jpg" alt="Queer Rated Comedy lineup poster, green" width="635" height="898" loading="lazy"></figure><figure style="flex:0.667 1 0"><img src="images/design/qrc-open-mic.jpg" alt="Queer Rated Open Mic poster" width="500" height="750" loading="lazy"></figure><figure style="flex:0.707 1 0"><img src="images/design/raunchy-comedy-nights.jpg" alt="Raunchy Comedy Nights poster" width="1100" height="1556" loading="lazy"></figure></div>
 <p class="cap">Brand identity: Goan Comedy Cartel and Smol Cat Films</p>
 <div class="row"><figure style="flex:1.000 1 0"><img src="images/brand/goan-comedy-cartel-logo.jpg" alt="Goan Comedy Cartel logo" width="900" height="900" loading="lazy"></figure><figure style="flex:0.707 1 0"><img src="images/brand/join-the-cartel.jpg" alt="Join the Cartel" width="707" height="1000" loading="lazy"></figure><figure style="flex:1.000 1 0"><img src="images/brand/smol-cat-films-wordmark.jpg" alt="Smol Cat Films wordmark" width="400" height="400" loading="lazy"></figure><figure style="flex:1.000 1 0"><img src="images/brand/smol-cat-films-mascot.jpg" alt="Smol Cat Films mascot logo" width="500" height="500" loading="lazy"></figure></div>
-<p class="cap">Client work: Navin Noronha's portfolio deck</p>
-<div class="row"><figure style="flex:1.777 1 0"><img src="images/deck/navin-portfolio-cover.jpg" alt="Navin Noronha portfolio cover" width="1100" height="619" loading="lazy"></figure><figure style="flex:1.777 1 0"><img src="images/deck/this-is-navin-noronha.jpg" alt="This is Navin Noronha" width="1100" height="619" loading="lazy"></figure></div>
-<div class="row"><figure style="flex:1.777 1 0"><img src="images/deck/live-shows-and-tours.jpg" alt="Live shows and tours" width="1100" height="619" loading="lazy"></figure><figure style="flex:1.777 1 0"><img src="images/deck/corporate-clients.jpg" alt="Corporate clients" width="1100" height="619" loading="lazy"></figure></div>
 <p class="cap">Event collateral</p>
 <div class="row"><figure style="flex:0.707 1 0"><img src="images/design/comedy-writing-workshop.jpg" alt="Comedy writing workshop poster" width="778" height="1100" loading="lazy"></figure><figure style="flex:0.707 1 0"><img src="images/design/bar-menu.jpg" alt="Bar menu" width="707" height="1000" loading="lazy"></figure><figure style="flex:0.707 1 0"><img src="images/design/good-child-poster.jpg" alt="The Good Child poster" width="778" height="1100" loading="lazy"></figure></div>
 </section>
@@ -654,6 +657,7 @@ A collection of profiles, interviews, reviews and conversations about Abhi Tunde
 <a href="https://www.instagram.com/abhitundel/" target="_blank" rel="noopener">@abhitundel</a>
 <a href="https://www.smolcatfilms.com" target="_blank" rel="noopener">smolcatfilms.com</a>
 <a href="https://goancomedycartel.com" target="_blank" rel="noopener">goancomedycartel.com</a>
+<a href="https://navin.goancomedycartel.com" target="_blank" rel="noopener">navin.goancomedycartel.com</a>
 </section>
 
 </main>
