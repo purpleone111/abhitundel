@@ -118,17 +118,6 @@ dialog::backdrop{background:rgba(5,5,6,.94);backdrop-filter:blur(6px)}
 dialog img{max-height:94vh;margin:auto;border-radius:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 
-/* scale iframes to a virtual desktop width */
-const fit=()=>document.querySelectorAll('#web .site').forEach(st=>{
-const fr=st.querySelector('iframe'),sc=st.querySelector('.screen'),vw=+st.dataset.vw||0;
-if(!fr)return;
-if(!vw||innerWidth<=800){fr.style.width=fr.style.height=fr.style.transform='';return}
-const k=sc.clientWidth/vw;
-fr.style.width=vw+'px';fr.style.height=(sc.clientHeight/k)+'px';fr.style.transform='scale('+k+')'
-});
-fit();addEventListener('resize',fit);addEventListener('load',fit);
-if(window.ResizeObserver){const ro=new ResizeObserver(fit);document.querySelectorAll('#web .screen').forEach(e=>ro.observe(e))}
-
 /* scroll reveal */
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -385,6 +374,34 @@ main:focus{outline:none}
 .cta{margin-top:5vh}.cta .lk{font-size:14px}
 @media(max-width:800px){.g-grid{opacity:.4}.g-btn{padding:18px 20px;letter-spacing:.12em}}
 @media(prefers-reduced-motion:reduce){.g-grid,.g-title,.g-btn.on,.cur{animation:none}.gate,.g-in{transition:none}}
+
+/* ===== touch: tap-to-interact overlay so embeds do not trap page scroll ===== */
+.tap{position:absolute;inset:0;z-index:3;display:flex;align-items:flex-end;justify-content:center;padding:14px;margin:0;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tap span{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#7dffb4;background:rgba(5,10,8,.78);border:1px solid rgba(125,255,180,.5);border-radius:20px;padding:10px 16px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.act .tap{display:none}
+.done{display:none;position:absolute;top:10px;right:10px;z-index:4;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#7dffb4;background:rgba(5,10,8,.82);border:1px solid rgba(125,255,180,.5);border-radius:20px;padding:9px 14px;cursor:pointer}
+.act .done{display:block}
+
+/* ===== mobile fixes ===== */
+@media(max-width:800px){
+/* nav: one tidy line, nothing crowded or wrapping */
+.nav{gap:12px;padding:14px 5%}
+.nav>a:first-child{font-size:18px;white-space:nowrap}
+.nav div{display:flex;gap:11px;flex-wrap:nowrap}
+.nav div a{margin-left:0;font-size:10px;letter-spacing:.05em;white-space:nowrap}
+/* web bars: url on its own line, buttons wrap underneath */
+#web .bar{flex-wrap:wrap;gap:10px 12px}
+#web .bar span{flex:1 1 100%}
+.bar div{flex-wrap:wrap}
+/* image rows: tidy two-column grid, an odd last image spans full width */
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start}
+.row figure{flex:none!important}
+.row figure:last-child:nth-child(odd){grid-column:1/-1}
+/* embeds: shorter so they never fill the whole screen, no nested scroll boxes */
+#web .site .screen,#web .site.tall .screen{height:62vh;min-height:420px}
+.vice-reel-media iframe{height:68vh;min-height:520px}
+.ig-post-media{height:auto;overflow:visible}
+}
 </style></head><body>
 
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Intro">
@@ -808,6 +825,33 @@ const lz=new IntersectionObserver(es=>{if(es[0].isIntersecting){set('live');lz.d
 lz.observe(s)
 }
 });
+
+/* scale iframes to a virtual desktop width */
+const fit=()=>document.querySelectorAll('#web .site').forEach(st=>{
+const fr=st.querySelector('iframe'),sc=st.querySelector('.screen'),vw=+st.dataset.vw||0;
+if(!fr)return;
+if(!vw||innerWidth<=800){fr.style.width=fr.style.height=fr.style.transform='';return}
+const k=sc.clientWidth/vw;
+fr.style.width=vw+'px';fr.style.height=(sc.clientHeight/k)+'px';fr.style.transform='scale('+k+')'
+});
+fit();addEventListener('resize',fit);addEventListener('load',fit);
+if(window.ResizeObserver){const ro=new ResizeObserver(fit);document.querySelectorAll('#web .screen').forEach(e=>ro.observe(e))}
+
+/* touch screens: tap to interact, so embeds do not trap page scrolling */
+if(matchMedia('(max-width:800px),(pointer:coarse)').matches){
+document.querySelectorAll('#web .screen,.vice-reel-media').forEach(box=>{
+if(!box.querySelector('iframe'))return;
+const tap=document.createElement('button');
+tap.type='button';tap.className='tap';
+tap.setAttribute('aria-label','Tap to interact');
+tap.innerHTML='<span>Tap to interact</span>';
+const done=document.createElement('button');
+done.type='button';done.className='done';done.textContent='Done \u00d7';
+box.append(tap,done);
+tap.onclick=()=>box.classList.add('act');
+done.onclick=()=>box.classList.remove('act')
+})
+}
 
 /* scroll reveal */
 const io=new IntersectionObserver(es=>es.forEach(e=>{
