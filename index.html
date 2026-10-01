@@ -403,7 +403,24 @@ main:focus{outline:none}
 #web .site .screen,#web .site.tall .screen{height:62vh;min-height:420px}
 .vice-reel-media iframe{height:68vh;min-height:520px}
 .ig-post-media{height:auto;overflow:visible}
+/* static preview cards (goancomedycartel, navin, style picker) */
+#web .site.is-static .screen{aspect-ratio:16/10!important;height:auto!important;min-height:0!important}
+#web .site.is-static .screen::before{display:none}
+/* nav: solid blurred bar so page text does not show through it */
+.nav{mix-blend-mode:normal;background:rgba(8,10,10,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 }
+
+/* ===== shared extras ===== */
+.open-ov{position:absolute;inset:0;z-index:3;display:flex;align-items:flex-end;justify-content:center;padding:14px;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.open-ov span{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#7dffb4;background:rgba(5,10,8,.82);border:1px solid rgba(125,255,180,.5);border-radius:20px;padding:10px 16px}
+.is-static .screen{background:radial-gradient(120% 90% at 30% 20%,#12251d,#0a100d)}
+/* smolcatfilms: tidy fallback card, no stray "connecting" text */
+.site:not([data-live]) .screen::before{display:none}
+.screen .mock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:#fff;text-decoration:none}
+.screen .mock img{width:auto;height:74%;max-width:none;object-fit:contain}
+.screen .mock span{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#111}
+/* hide iOS's native big play button on autoplay videos */
+.screen video::-webkit-media-controls,.screen video::-webkit-media-controls-start-playback-button,.screen video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none}
 </style></head><body>
 
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Intro">
@@ -434,13 +451,13 @@ main:focus{outline:none}
 <section id="web"><h2>Web</h2><p class="intro">Sites I built for clients and for myself, a style picker for choosing a look, and a game I am making. Most of them run live right here.</p>
 <div class="sites">
 
-<div class="site" data-vw="1024" data-vwm="820" data-live="https://goancomedycartel.com">
+<div class="site" data-static data-live="https://goancomedycartel.com">
 <div class="bar"><span>goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="https://goancomedycartel.com/Social-Image.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="Goan Comedy Cartel" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Goan Comedy Cartel</h3><div class="tags"><i>Co-founded</i><i>Brand + site</i></div><p>The site for the comedy collective I co-founded.</p></div>
 </div>
 
-<div class="site" data-vw="960" data-vwm="820" data-live="https://navin.goancomedycartel.com">
+<div class="site" data-static data-live="https://navin.goancomedycartel.com">
 <div class="bar"><span>navin.goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://navin.goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="images/web/navin.jpg" onerror="this.src='images/deck/navin-portfolio-cover.jpg'" alt="navin.goancomedycartel.com preview"><iframe title="Navin Noronha's Portfolio" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Navin Noronha&rsquo;s Portfolio</h3><div class="tags"><i>Client</i><i>Portfolio</i></div><p>A portfolio site for stand-up comedian Navin Noronha.</p></div>
@@ -451,7 +468,7 @@ main:focus{outline:none}
 <div class="screen">
 <a class="mock" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/brand/smol-cat-films-mascot.jpg" alt=""><span>Born this stray!</span></a>
 <a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/web/smolcatfilms.jpg" alt="smolcatfilms.com preview" onerror="this.parentNode.remove()"></a>
-<a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><video autoplay muted loop playsinline preload="metadata" poster="images/web/smolcatfilms.jpg"><source src="images/web/smolcatfilms.mp4" type="video/mp4" onerror="this.closest('.shot').remove()"></video></a>
+<a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><video autoplay muted loop playsinline preload="metadata"><source src="images/web/smolcatfilms.mp4#t=0.001" type="video/mp4" onerror="this.closest('.shot').remove()"></video></a>
 </div>
 <div class="meta"><h3>Smol Cat Films</h3><div class="tags"><i>Studio</i><i>Own site</i></div><p>The site for my film studio. It opens in its own tab.</p></div>
 </div>
@@ -462,7 +479,7 @@ main:focus{outline:none}
 <div class="meta"><h3>ONE MORE</h3><div class="tags"><i>Game</i><i>In progress</i></div><p>An endless orbs game I am making. Clear touching orbs to buy more time.</p></div>
 </div>
 
-<div class="site tall" data-vw="1200" data-live="https://style.smolcatfilms.com/">
+<div class="site tall" data-static data-live="https://style.smolcatfilms.com/">
 <div class="bar"><span>style.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><iframe title="Style Picker" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Style Picker</h3><div class="tags"><i>Tool</i><i>For clients</i></div><p>A tool for clients: try 26 palettes, type pairings and six layouts on a sample site, then email me the picks with one click.</p></div>
@@ -805,9 +822,24 @@ b.replaceWith(f);
 f.style.cssText='width:100%;aspect-ratio:16/9;border:0;display:block'
 });
 
+const mob=matchMedia('(max-width:800px),(pointer:coarse)').matches;
+
 document.querySelectorAll('.site').forEach(s=>{
 const fr=s.querySelector('iframe');
 if(!fr)return;
+
+/* phones: no live frame for the desktop-built sites, a clean preview card with an Open button instead */
+if(mob&&s.hasAttribute('data-static')){
+s.classList.add('is-static');
+fr.remove();
+s.querySelectorAll('.bar button').forEach(b=>b.remove());
+const a=document.createElement('a');
+a.className='open-ov';a.href=s.dataset.live;a.target='_blank';a.rel='noopener';
+a.setAttribute('aria-label','Open '+s.dataset.live);
+a.innerHTML='<span>Open site \u2197</span>';
+s.querySelector('.screen').append(a);
+return
+}
 
 const set=m=>{
 s.querySelectorAll('.bar button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
@@ -828,23 +860,12 @@ lz.observe(s)
 }
 });
 
-/* scale iframes to a virtual desktop width */
-const fit=()=>document.querySelectorAll('#web .site').forEach(st=>{
-const fr=st.querySelector('iframe'),sc=st.querySelector('.screen'),vw=+(innerWidth<=800?st.dataset.vwm:st.dataset.vw)||0;
-if(!fr)return;
-if(!vw){fr.style.width=fr.style.height=fr.style.transform='';return}
-const k=sc.clientWidth/vw;
-fr.style.width=vw+'px';fr.style.height=(sc.clientHeight/k)+'px';fr.style.transform='scale('+k+')'
-});
-fit();addEventListener('resize',fit);addEventListener('load',fit);
-if(window.ResizeObserver){const ro=new ResizeObserver(fit);document.querySelectorAll('#web .screen').forEach(e=>ro.observe(e))}
-
-/* smolcatfilms video: force muted autoplay, and if the phone blocks it
-   (iOS Low Power Mode etc.) hide the video so the still image shows, not a play button */
+/* smolcatfilms video: muted inline autoplay; if the phone blocks it (iOS Low Power Mode)
+   the first frame stays visible and the video starts on the first tap or scroll */
 document.querySelectorAll('.screen video').forEach(v=>{
-const sh=v.closest('.shot');let vis=false;
+let vis=false;
 v.muted=true;v.defaultMuted=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
-const go=()=>{const p=v.play();if(p&&p.then)p.then(()=>{sh.style.display=''}).catch(()=>{sh.style.display='none'})};
+const go=()=>{const p=v.play();if(p&&p.catch)p.catch(()=>{})};
 new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;if(vis)go();else v.pause()}),{threshold:.2}).observe(v);
 ['touchend','click'].forEach(ev=>addEventListener(ev,()=>{if(vis&&v.paused)go()},{passive:true}))
 });
