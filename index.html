@@ -421,6 +421,24 @@ main:focus{outline:none}
 .screen .mock span{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#111}
 /* hide iOS's native big play button on autoplay videos */
 .screen video::-webkit-media-controls,.screen video::-webkit-media-controls-start-playback-button,.screen video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none}
+
+/* ===== web previews: show the whole image, never crop ===== */
+#web .screen{background:#0d0d0f}
+#web .screen img.prev,
+#web .screen .shot img,
+#web .screen .shot video{object-fit:contain;object-position:center}
+#web .screen:has(.shot) .mock{display:none}
+
+@media(min-width:801px){
+#web .site:not(.tall) .screen{aspect-ratio:16/9}
+#web .site.tall .screen{aspect-ratio:16/9;height:auto;max-height:640px}
+}
+
+@media(max-width:800px){
+#web .site.is-static .screen,
+#web .site:not([data-live]) .screen{aspect-ratio:16/9!important;height:auto!important;min-height:0!important}
+.open-ov span{display:none}
+}
 </style></head><body>
 
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Intro">
@@ -453,7 +471,7 @@ main:focus{outline:none}
 
 <div class="site" data-static data-live="https://goancomedycartel.com">
 <div class="bar"><span>goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
-<div class="screen"><img class="prev" src="https://goancomedycartel.com/Social-Image.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="Goan Comedy Cartel" loading="lazy" allow="fullscreen"></iframe></div>
+<div class="screen"><img class="prev" src="images/web/goancomedycartel.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="Goan Comedy Cartel" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Goan Comedy Cartel</h3><div class="tags"><i>Co-founded</i><i>Brand + site</i></div><p>The site for the comedy collective I co-founded.</p></div>
 </div>
 
@@ -480,8 +498,8 @@ main:focus{outline:none}
 </div>
 
 <div class="site tall" data-static data-live="https://style.smolcatfilms.com/">
-<div class="bar"><span>style.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
-<div class="screen"><iframe title="Style Picker" loading="lazy" allow="fullscreen"></iframe></div>
+<div class="bar"><span>style.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="screen"><img class="prev" src="images/web/style.jpg" alt="Style Picker preview"><iframe title="Style Picker" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Style Picker</h3><div class="tags"><i>Tool</i><i>For clients</i></div><p>A tool for clients: try 26 palettes, type pairings and six layouts on a sample site, then email me the picks with one click.</p></div>
 </div>
 
