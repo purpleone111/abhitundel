@@ -384,6 +384,8 @@ main:focus{outline:none}
 
 /* ===== mobile fixes ===== */
 @media(max-width:800px){
+/* screenshot/video site (no iframe): landscape box so the image is not zoomed or cropped */
+#web .site:not([data-live]) .screen{aspect-ratio:16/10;height:auto;min-height:0}
 /* nav: one tidy line, nothing crowded or wrapping */
 .nav{gap:12px;padding:14px 5%}
 .nav>a:first-child{font-size:18px;white-space:nowrap}
@@ -432,13 +434,13 @@ main:focus{outline:none}
 <section id="web"><h2>Web</h2><p class="intro">Sites I built for clients and for myself, a style picker for choosing a look, and a game I am making. Most of them run live right here.</p>
 <div class="sites">
 
-<div class="site" data-vw="1024" data-live="https://goancomedycartel.com">
+<div class="site" data-vw="1024" data-vwm="820" data-live="https://goancomedycartel.com">
 <div class="bar"><span>goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="https://goancomedycartel.com/Social-Image.jpg" onerror="this.src='images/brand/goan-comedy-cartel-logo.jpg'" alt="goancomedycartel.com preview"><iframe title="Goan Comedy Cartel" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Goan Comedy Cartel</h3><div class="tags"><i>Co-founded</i><i>Brand + site</i></div><p>The site for the comedy collective I co-founded.</p></div>
 </div>
 
-<div class="site" data-vw="960" data-live="https://navin.goancomedycartel.com">
+<div class="site" data-vw="960" data-vwm="820" data-live="https://navin.goancomedycartel.com">
 <div class="bar"><span>navin.goancomedycartel.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://navin.goancomedycartel.com" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="images/web/navin.jpg" onerror="this.src='images/deck/navin-portfolio-cover.jpg'" alt="navin.goancomedycartel.com preview"><iframe title="Navin Noronha's Portfolio" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Navin Noronha&rsquo;s Portfolio</h3><div class="tags"><i>Client</i><i>Portfolio</i></div><p>A portfolio site for stand-up comedian Navin Noronha.</p></div>
@@ -449,7 +451,7 @@ main:focus{outline:none}
 <div class="screen">
 <a class="mock" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/brand/smol-cat-films-mascot.jpg" alt=""><span>Born this stray!</span></a>
 <a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><img src="images/web/smolcatfilms.jpg" alt="smolcatfilms.com preview" onerror="this.parentNode.remove()"></a>
-<a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><video autoplay muted loop playsinline preload="metadata"><source src="images/web/smolcatfilms.mp4" type="video/mp4" onerror="this.closest('.shot').remove()"></video></a>
+<a class="shot" href="https://www.smolcatfilms.com" target="_blank" rel="noopener" aria-label="Open smolcatfilms.com"><video autoplay muted loop playsinline preload="metadata" poster="images/web/smolcatfilms.jpg"><source src="images/web/smolcatfilms.mp4" type="video/mp4" onerror="this.closest('.shot').remove()"></video></a>
 </div>
 <div class="meta"><h3>Smol Cat Films</h3><div class="tags"><i>Studio</i><i>Own site</i></div><p>The site for my film studio. It opens in its own tab.</p></div>
 </div>
@@ -828,14 +830,24 @@ lz.observe(s)
 
 /* scale iframes to a virtual desktop width */
 const fit=()=>document.querySelectorAll('#web .site').forEach(st=>{
-const fr=st.querySelector('iframe'),sc=st.querySelector('.screen'),vw=+st.dataset.vw||0;
+const fr=st.querySelector('iframe'),sc=st.querySelector('.screen'),vw=+(innerWidth<=800?st.dataset.vwm:st.dataset.vw)||0;
 if(!fr)return;
-if(!vw||innerWidth<=800){fr.style.width=fr.style.height=fr.style.transform='';return}
+if(!vw){fr.style.width=fr.style.height=fr.style.transform='';return}
 const k=sc.clientWidth/vw;
 fr.style.width=vw+'px';fr.style.height=(sc.clientHeight/k)+'px';fr.style.transform='scale('+k+')'
 });
 fit();addEventListener('resize',fit);addEventListener('load',fit);
 if(window.ResizeObserver){const ro=new ResizeObserver(fit);document.querySelectorAll('#web .screen').forEach(e=>ro.observe(e))}
+
+/* smolcatfilms video: force muted autoplay, and if the phone blocks it
+   (iOS Low Power Mode etc.) hide the video so the still image shows, not a play button */
+document.querySelectorAll('.screen video').forEach(v=>{
+const sh=v.closest('.shot');let vis=false;
+v.muted=true;v.defaultMuted=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+const go=()=>{const p=v.play();if(p&&p.then)p.then(()=>{sh.style.display=''}).catch(()=>{sh.style.display='none'})};
+new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;if(vis)go();else v.pause()}),{threshold:.2}).observe(v);
+['touchend','click'].forEach(ev=>addEventListener(ev,()=>{if(vis&&v.paused)go()},{passive:true}))
+});
 
 /* touch screens: tap to interact, so embeds do not trap page scrolling */
 if(matchMedia('(max-width:800px),(pointer:coarse)').matches){
