@@ -434,8 +434,12 @@ main:focus{outline:none}
 
 @media(min-width:801px){
 #web .site:not(.tall) .screen{aspect-ratio:16/9}
-#web .site.tall .screen{aspect-ratio:16/9;height:auto;max-height:640px}
+#web .site.tall .screen{aspect-ratio:auto;width:100%;height:clamp(520px,46vw,680px);max-height:none}
 }
+
+/* Smol Cat Films card only: fill the frame instead of letterboxing */
+#web .site:has(.mock) .screen .shot img,
+#web .site:has(.mock) .screen .shot video{object-fit:cover;object-position:top}
 
 @media(max-width:800px){
 #web .site.is-static .screen,
