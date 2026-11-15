@@ -31,6 +31,9 @@ img{display:block;max-width:100%}a{color:var(--ink)}
 .nav>a:first-child{margin:0;font:400 22px/1 var(--serif);letter-spacing:0;text-transform:none}
 .nav div a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
 .nav div a:hover::after{transform:scaleX(1)}
+/* The navigation is only a hero element; get it out of the way once the page moves. */
+.nav{transition:transform .45s var(--ease),opacity .35s var(--ease)}
+.nav.nav-hidden{transform:translateY(-110%);opacity:0;pointer-events:none}
 
 /* hero */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4%;overflow:hidden;position:relative}
@@ -510,7 +513,7 @@ main:focus{outline:none}
 </div>
 
 <div class="site tall" data-static data-live="https://style.smolcatfilms.com/">
-<div class="bar"><span>style.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
+<div class="bar"><span>STYLE PICKER</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://style.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="images/web/style.jpg" alt="Style Picker preview"><iframe title="Style Picker" loading="lazy" allow="fullscreen"></iframe></div>
 <div class="meta"><h3>Style Picker</h3><div class="tags"><i>Tool</i><i>For clients</i></div><p>A tool for clients: try 26 palettes, type pairings and six layouts on a sample site, then email me the picks with one click.</p></div>
 </div>
@@ -830,6 +833,19 @@ A collection of profiles, interviews, reviews and conversations about Abhi Tunde
 <dialog id="lb"><img alt=""></dialog>
 
 <script>
+/* Hide the top navigation as soon as visitors leave the opening view. */
+const topNav=document.querySelector('.nav');
+let navTick=false;
+const updateTopNav=()=>{
+  const y=window.scrollY||document.documentElement.scrollTop;
+  topNav.classList.toggle('nav-hidden',y>80);
+  navTick=false;
+};
+window.addEventListener('scroll',()=>{
+  if(!navTick){window.requestAnimationFrame(updateTopNav);navTick=true}
+},{passive:true});
+updateTopNav();
+
 const rl=document.querySelector('.reel');
 rl.innerHTML+=rl.innerHTML;
 
