@@ -485,7 +485,7 @@ main:focus{outline:none}
 <div class="site" data-static data-live="https://frame.smolcatfilms.com/">
 <div class="bar"><span>frame.smolcatfilms.com</span><div><button data-m="live" class="on">Live</button><button data-m="prev">Preview</button><a href="https://frame.smolcatfilms.com/" target="_blank" rel="noopener">Open site</a></div></div>
 <div class="screen"><img class="prev" src="images/web/frame-strip.jpg" alt="Frame Strip preview"><iframe title="Frame Strip" loading="lazy" allow="fullscreen"></iframe></div>
-<div class="meta"><h3>Frame Strip</h3><div class="tags"><i>Tool</i><i>Own project</i></div><p>A browser-based video tool for turning footage into visual frame strips and extracting the moments you need.</p></div>
+<div class="meta"><h3>Frame Strip</h3><div class="tags"><i>Video player</i><i>Own project</i></div><p>A Video.js 10 player skin that opens a strip of real frames above the seek bar, coloured and numbered by chapter, with accessibility options built in.</p></div>
 </div>
 
 <div class="site" data-static data-live="https://navin.goancomedycartel.com">
@@ -552,6 +552,7 @@ main:focus{outline:none}
 <article class="card"><button class="yt" data-id="0OfEoADDHSQ" aria-label="Play The Cradle"><img src="https://i.ytimg.com/vi/0OfEoADDHSQ/hqdefault.jpg" alt="The Cradle video thumbnail" loading="lazy"><span>&#9654;</span></button><h3>The Cradle <small>2023</small></h3><p>A man struggles to provide for his newborn, until he realises he must also check on it once in a while.</p><ul><li><b>ISFFA Season 4</b>Jury Mention, Horror Short Film</li><li><b>GIFFI Season 3</b>Official Selection</li><li><b>Midnight Monster Club (USA)</b>Official Selection, Best Psychological Horror Film</li></ul></article>
 <article class="card"><button class="yt" data-id="S42H75GuLv4" aria-label="Play The Good Child"><img src="https://i.ytimg.com/vi/S42H75GuLv4/hqdefault.jpg" alt="The Good Child video thumbnail" loading="lazy"><span>&#9654;</span></button><h3>The Good Child</h3><p>India's first queer stand-up comedy special, by Navin Noronha.</p></article>
 <article class="card"><button class="yt" data-id="VDG3R9-hn40" aria-label="Play Sweater Weather"><img src="https://i.ytimg.com/vi/VDG3R9-hn40/hqdefault.jpg" alt="Sweater Weather video thumbnail" loading="lazy"><span>&#9654;</span></button><h3>Sweater Weather</h3><p>A middle-aged widower trapped in the past and his daughter, fixated on the future, struggle to connect while mourning.</p></article>
+<article class="card"><button class="yt" data-embed="https://frame.smolcatfilms.com/embed.html" aria-label="Play the Sweater Whether teaser in the Frame Strip player"><img src="https://image.mux.com/5YgdV2ic9TKHQ6MdG8yCf9lceJjSWkayQXk01L013drbQ/thumbnail.webp?time=18&width=640" alt="Sweater Whether teaser thumbnail" loading="lazy"><span>&#9654;</span></button><h3>Sweater Whether <small>Teaser</small></h3><p>The teaser, played in Frame Strip, my Video.js 10 skin. Hover the seek bar to scrub by real frames, and open Accessibility to change how the player looks and moves.</p><a href="https://frame.smolcatfilms.com/" target="_blank" rel="noopener">About the skin</a></article>
 </div>
 <div class="posters">
 <article class="pcard"><figure style="flex:0.707 1 0"><img src="images/film/scar-tissue-poster.jpg" alt="Scar Tissue poster" width="1000" height="1414" loading="lazy"></figure><div><h3>Scar Tissue</h3><p>Fifteen-year-old Ali grapples with his sexuality and suicidal thoughts, finding solace in his friendship with Vikas.</p><a class="lk" href="https://mubi.com/en/in/films/scar-tissue-2015" target="_blank" rel="noopener">See on MUBI</a></div></article>
@@ -865,7 +866,7 @@ lb.onclick=()=>lb.close();
 
 document.querySelectorAll('.yt').forEach(b=>b.onclick=()=>{
 const f=document.createElement('iframe');
-f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0';
+f.src=b.dataset.embed?b.dataset.embed:'https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0';
 f.allow='autoplay; encrypted-media; fullscreen';
 f.allowFullscreen=true;
 b.replaceWith(f);
